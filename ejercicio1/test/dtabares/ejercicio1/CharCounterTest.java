@@ -15,7 +15,7 @@ public class CharCounterTest {
 
     }
 
-    /*
+
     @Test
     public void howManyShouldReturnNegativeWhenCharIsSymbolMoney(){
         
@@ -25,7 +25,7 @@ public class CharCounterTest {
 
     }
 
-
+    /*
     @Test
     public void howManyShouldReturnNegativeWhenCharIsSymbolAt(){
         
