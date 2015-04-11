@@ -1,6 +1,7 @@
 Testsuite: dtabares.ejercicio1.CharCounterTest
-Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0.021 sec
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.023 sec
 
-Testcase: howManyShouldReturnNegativeWhenCharIsSymbolAt took 0.002 sec
-Testcase: howManyShouldReturnNegativeWhenCharIsSymbolMoney took 0 sec
-Testcase: howManyShouldReturnZeroWhenCharIsNotPresent took 0 sec
+Testcase: howManyShouldReturnNegativeWhenCharIsSymbolMoney took 0.002 sec
+Testcase: howManyShouldReturnNegativeWhenCharIsSymbolAt took 0.001 sec
+Testcase: howManyShouldReturnZeroWhenCharIsNotPresent took 0.001 sec
+Testcase: countAllShouldReturnAnArrayWithAllCharsCount took 0.001 sec

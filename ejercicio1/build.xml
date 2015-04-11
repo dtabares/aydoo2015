@@ -39,6 +39,7 @@
 	<target name="compilar.tests" depends="compilar.aplicacion">
 		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes">
 			<classpath refid="classpath" />
+			<compilerarg value="-Xlint:unchecked"/>
 		</javac>
 	</target>
 

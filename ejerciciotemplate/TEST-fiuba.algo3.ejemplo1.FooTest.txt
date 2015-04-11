@@ -1,4 +1,4 @@
 Testsuite: fiuba.algo3.ejemplo1.FooTest
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.017 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.018 sec
 
-Testcase: doFooShouldReturnFoo took 0.002 sec
+Testcase: doFooShouldReturnFoo took 0.003 sec
