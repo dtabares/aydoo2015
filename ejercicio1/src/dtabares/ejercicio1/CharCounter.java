@@ -13,18 +13,21 @@ public class CharCounter  {
 	
 	public int howMany (char charValue){
 
-		if (charValue == '$'){
-			this.ocurrences = -1;
-		}
-		else {
-			stringToAnalizeLenght = stringToAnalize.length();
 
-			for (int i = 0; i < stringToAnalizeLenght; i++) {
+		switch (charValue){
 
-				if (this.stringToAnalize.charAt(i) == charValue) {
-					this.ocurrences++;
+			case '$': this.ocurrences = -1; break;
+			case '@': this.ocurrences = -2; break;
+			default:
+				stringToAnalizeLenght = stringToAnalize.length();
+
+				for (int i = 0; i < stringToAnalizeLenght; i++) {
+
+					if (this.stringToAnalize.charAt(i) == charValue) {
+						this.ocurrences++;
+					}
 				}
-			}
+				break;
 		}
 		return this.ocurrences;
 	}
