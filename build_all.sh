@@ -4,3 +4,5 @@ cd ejerciciotemplate
 ant
 cd ../ejercicio1
 ant
+cd ../trabajoPractico1
+ant
