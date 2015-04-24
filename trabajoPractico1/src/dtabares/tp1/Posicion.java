@@ -15,6 +15,6 @@ public class Posicion {
     }
 
     public double obtenerLongitud(){
-        return this.latitud;
+        return this.longitud;
     }
 }
