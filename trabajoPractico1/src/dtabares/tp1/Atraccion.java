@@ -20,23 +20,23 @@ public class Atraccion {
         this.posicion = posicion;
     }
 
-    public String getNombre() {
+    public String obtenerNombre() {
         return nombre;
     }
 
-    public double getCosto() {
+    public double obtenerCosto() {
         return costo;
     }
 
-    public int getDuracionPromedioDeVisitaEnMins() {
+    public int obtenerDuracionPromedioDeVisitaEnMins() {
         return duracionPromedioDeVisitaEnMins;
     }
 
-    public int getCupoDeVisitantesDiarios() {
+    public int obtenerCupoDeVisitantesDiarios() {
         return cupoDeVisitantesDiarios;
     }
 
-    public TipoDeAtraccion getTipoDeAtraccion() {
+    public TipoDeAtraccion obtenerTipoDeAtraccion() {
         return tipoDeAtraccion;
     }
 
