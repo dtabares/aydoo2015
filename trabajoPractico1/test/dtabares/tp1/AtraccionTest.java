@@ -13,10 +13,22 @@ public class AtraccionTest {
         int duracionPromedioDeVisitaEnMins = 20;
         int cupoDeVisitantesDiarios = 500;
         TipoDeAtraccion tipoDeAtraccion = TipoDeAtraccion.Aventura;
-        double latitud = -34.6037232;
-        double longitud = -58.3815931;
-        Atraccion atraccionDePrueba = new Atraccion (nombre, costo, duracionPromedioDeVisitaEnMins, cupoDeVisitantesDiarios, tipoDeAtraccion, latitud, longitud);
+        Posicion posicion = new Posicion(-34.6037232,-58.3815931 );
+        Atraccion atraccionDePrueba = new Atraccion (nombre, costo, duracionPromedioDeVisitaEnMins, cupoDeVisitantesDiarios, tipoDeAtraccion, posicion);
 
-        Assert.assertEquals(-34.6037232,atraccionDePrueba.getLatitud(),0);
+        Assert.assertEquals(-34.6037232,atraccionDePrueba.obtenerPosicion().obtenerLatitud(),0);
+    }
+
+    @Test
+    public void nombreDeLaAtraccionDebeSerLaCasaDeBilbo(){
+        String nombre = "La Casa de Bilbo";
+        double costo = 200;
+        int duracionPromedioDeVisitaEnMins = 20;
+        int cupoDeVisitantesDiarios = 500;
+        TipoDeAtraccion tipoDeAtraccion = TipoDeAtraccion.Aventura;
+        Posicion posicion = new Posicion(-34.6037232,-58.3815931 );
+        Atraccion atraccionDePrueba = new Atraccion (nombre, costo, duracionPromedioDeVisitaEnMins, cupoDeVisitantesDiarios, tipoDeAtraccion, posicion);
+
+        Assert.assertEquals("La Casa de Bilbo",atraccionDePrueba.getNombre());
     }
 }

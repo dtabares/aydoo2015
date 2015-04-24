@@ -8,18 +8,16 @@ public class Atraccion {
     private int duracionPromedioDeVisitaEnMins;
     private  int cupoDeVisitantesDiarios;
     private TipoDeAtraccion tipoDeAtraccion;
-    private double latitud;
-    private  double longitud;
+    private Posicion posicion;
 
-    public Atraccion (String nombre, double costo, int duracionPromedioDeVisitaEnMins, int cupoDeVisitantesDiarios, TipoDeAtraccion tipoDeAtraccion, double latitud, double longitud){
+    public Atraccion (String nombre, double costo, int duracionPromedioDeVisitaEnMins, int cupoDeVisitantesDiarios, TipoDeAtraccion tipoDeAtraccion, Posicion posicion){
 
         this.nombre = nombre;
         this.costo = costo;
         this.duracionPromedioDeVisitaEnMins = duracionPromedioDeVisitaEnMins;
         this.cupoDeVisitantesDiarios = cupoDeVisitantesDiarios;
         this.tipoDeAtraccion = tipoDeAtraccion;
-        this.latitud = latitud;
-        this.longitud = longitud;
+        this.posicion = posicion;
     }
 
     public String getNombre() {
@@ -42,11 +40,8 @@ public class Atraccion {
         return tipoDeAtraccion;
     }
 
-    public double getLatitud() {
-        return latitud;
+    public Posicion obtenerPosicion() {
+        return posicion;
     }
 
-    public double getLongitud() {
-        return longitud;
-    }
 }
