@@ -19,4 +19,17 @@ public class CalculadorDeDistanciasTest{
 
     }
 
+    @Test
+    public void laDistanciaEntreOrigenYDestinoDebeSerCasi22Coma36(){
+
+        double resultadoEsperado = 22.360679775;
+        Posicion origen = new Posicion(20,40);
+        Posicion destino = new Posicion(10,20);
+
+        double distancia = CalculadorDeDistancias.calcularDistanciaEntreDosPosiciones(origen,destino);
+
+        Assert.assertEquals(resultadoEsperado,distancia,0.1);
+
+    }
+
 }
