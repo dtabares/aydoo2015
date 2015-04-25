@@ -9,10 +9,20 @@ public class UsuarioTest{
     public void laPosicionDelUsuarioDebeSerLatitudDiezYLongitudVeinte(){
         Posicion posicionActual = new Posicion(10,20);
 
-        Usuario usuario = new Usuario(1000,200,20,TipoDeAtraccion.Paisaje,posicionActual);
+        Usuario usuario = new Usuario(1000,200,20,TipoDeAtraccion.Aventura,posicionActual);
 
         Assert.assertEquals(10,usuario.obtenerPosicionActual().obtenerLatitud(),0);
         Assert.assertEquals(20,usuario.obtenerPosicionActual().obtenerLongitud(),0);
+
+    }
+
+    @Test
+    public void elTipoDeAtraccionFavoritaDebeSerDelTipoDegustación(){
+        Posicion posicionActual = new Posicion(10,20);
+
+        Usuario usuario = new Usuario(1000,200,20,TipoDeAtraccion.Degustacion,posicionActual);
+
+        Assert.assertEquals(TipoDeAtraccion.Degustacion,usuario.obtenerTipoDeAtraccionFavorita());
 
     }
 
