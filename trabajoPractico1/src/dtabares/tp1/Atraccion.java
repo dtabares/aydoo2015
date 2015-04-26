@@ -1,6 +1,6 @@
 package dtabares.tp1;
 
-public class Atraccion {
+public class Atraccion implements Comparable<Atraccion> {
 
 
     private String nombre;
@@ -44,4 +44,38 @@ public class Atraccion {
         return posicion;
     }
 
+    @Override
+    public int compareTo(Atraccion otraAtraccion) {
+        return this.nombre.compareTo(otraAtraccion.obtenerNombre());
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        boolean result = true;
+
+        if (o == null){
+            result = false;
+        }
+
+        if (!(o instanceof Atraccion)){
+            result = false;
+        }
+
+        if (o == this) {
+            result = true;
+        }
+
+        Atraccion otraAtraccion = (Atraccion) o;
+
+        if (! this.nombre.equals((otraAtraccion.obtenerNombre()))) {
+            result = false;
+        }
+
+        return result;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.nombre.hashCode();
+    }
 }
