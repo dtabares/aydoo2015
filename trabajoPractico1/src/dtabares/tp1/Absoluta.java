@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Absoluta extends Promocion{
 
-    private Set atracciocionesSujetasADescuento;
+
     private double costoPorPaquete;
 
     public Absoluta(String nombre,PeriodoDeVigencia periodoDeVigencia,Set atracciocionesSujetasADescuento,double costoPorPaquete){

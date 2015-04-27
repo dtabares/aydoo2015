@@ -8,7 +8,6 @@ public class Porcentual extends Promocion{
 
 
     private double porcentajeDeDescuento;
-    private Set atracciocionesSujetasADescuento;
 
     public Porcentual(String nombre, double porcentajeDeDescuento,PeriodoDeVigencia periodoDeVigencia,Set atracciocionesSujetasADescuento){
         this.nombre = nombre;
