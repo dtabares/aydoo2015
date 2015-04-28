@@ -3,12 +3,12 @@ package dtabares.tp1;
 public class PerfilDeUsuario {
 
     private double presupuestoDisponible;
-    private int tiempoDisponibleParaVisitas;
-    private float velocidadDeTraslado;
+    private double tiempoDisponibleParaVisitas;
+    private double velocidadDeTraslado;
     private TipoDeAtraccion tipoDeAtraccionFavorita;
     private Posicion posicionActual;
 
-    public PerfilDeUsuario(double presupuestoDisponible, int tiempoDisponibleParaVisitas, float velocidadDeTraslado, TipoDeAtraccion tipoDeAtraccionFavorita, Posicion posicionActual){
+    public PerfilDeUsuario(double presupuestoDisponible, double tiempoDisponibleParaVisitas, double velocidadDeTraslado, TipoDeAtraccion tipoDeAtraccionFavorita, Posicion posicionActual){
 
         this.presupuestoDisponible = presupuestoDisponible;
         this.tiempoDisponibleParaVisitas = tiempoDisponibleParaVisitas;
@@ -21,11 +21,11 @@ public class PerfilDeUsuario {
         return this.presupuestoDisponible;
     }
 
-    public int obtenerTiempoDisponibleParaVisitas() {
+    public double obtenerTiempoDisponibleParaVisitas() {
         return this.tiempoDisponibleParaVisitas;
     }
 
-    public float obtenerVelocidadDeTraslado() {
+    public double obtenerVelocidadDeTraslado() {
         return this.velocidadDeTraslado;
     }
 
