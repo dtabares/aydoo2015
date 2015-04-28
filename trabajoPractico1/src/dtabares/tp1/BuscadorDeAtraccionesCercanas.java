@@ -28,13 +28,9 @@ public class BuscadorDeAtraccionesCercanas {
                 Atraccion atraccionAComparar  = (Atraccion) iterador.next();
                 distanciaDeLaAtraccionAComparar = CalculadorDeDistancia.calcularDistanciaEntreDosPosiciones(posicionActual,atraccionAComparar.obtenerPosicion());
 
-                System.out.println("Atraccion Con La Dist Mas Baja: " + atracciónConLaDistanciaMasBajaEncontrada.obtenerNombre());
-                System.out.println("Atraccion a Comparar: " + atraccionAComparar.obtenerNombre());
-                System.out.println("distanciaAlaAtraccionMasCercana: " + distanciaAlaAtraccionMasCercana);
-                System.out.println("distanciaDeLaAtraccionAComparar: " + distanciaDeLaAtraccionAComparar);
+
                 //Si esto es True quiere decir que el usuario estaba parado en esta atraccion
                 if (distanciaAlaAtraccionMasCercana == 0){
-                    System.out.println("Entre");
                     atraccionesMasCercanas.clear();
                     atracciónConLaDistanciaMasBajaEncontrada = atraccionAComparar;
                     atraccionesMasCercanas.add(atracciónConLaDistanciaMasBajaEncontrada);
