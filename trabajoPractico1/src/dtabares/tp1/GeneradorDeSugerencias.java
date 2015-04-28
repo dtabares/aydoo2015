@@ -34,7 +34,8 @@ public class GeneradorDeSugerencias {
 
     private void generarItinerarioPriorizandoGustosDelUsuario(){
         Itinerario itinerarioPriorizandoGustosDelUsuario = new Itinerario();
-        Set<Atraccion> atraccionesQueLeFaltarianRecorrer = this.atraccionesDelParque;
+        Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet(this.atraccionesDelParque);
+        //System.out.println("AtraccionesPorRecorrer en Gusto: " + atraccionesQueLeFaltarianRecorrer.size());
         Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia = BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(this.atraccionesDelParque, this.perfilDeUsuario.obtenerTipoDeAtraccionFavorita());
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
@@ -44,14 +45,12 @@ public class GeneradorDeSugerencias {
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
         while (iteradorDeAtraccionesPreferidas.hasNext()){
-            System.out.println("Entre");
             Atraccion atraccionPreferidaAEvaluar = iteradorDeAtraccionesPreferidas.next();
             if (this.seDanLasCondiciones(atraccionPreferidaAEvaluar,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                 itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionPreferidaAEvaluar);
                 dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionPreferidaAEvaluar.obtenerCosto();
                 tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionPreferidaAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionPreferidaAEvaluar,posicionActualDelUsuario);
                 posicionActualDelUsuario = atraccionPreferidaAEvaluar.obtenerPosicion();
-                System.out.println("cumpli las condiciones");
             }
             atraccionesQueLeFaltarianRecorrer.remove(atraccionPreferidaAEvaluar);
         }
@@ -86,10 +85,15 @@ public class GeneradorDeSugerencias {
 
     private void generarItinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones(){
         Itinerario itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones = new Itinerario();
-        Set<Atraccion> atraccionesQueLeFaltarianRecorrer = this.atraccionesDelParque;
+        Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet<>(this.atraccionesDelParque) ;
+        //System.out.println("AtraccionesPorRecorrer: " + atraccionesQueLeFaltarianRecorrer.size());
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
+        //System.out.println("guitaEnMax: " + dineroDelUsuarioRestante);
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
+        //System.out.println("tiempoEnMAx: " + tiempoParaVisitasRestante);
         Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
+        //System.out.println("Latitud en Max : " + posicionActualDelUsuario.obtenerLatitud());
+        //System.out.println("Longitud en Max: " + posicionActualDelUsuario.obtenerLongitud());
         double reduccionGanadaEnPromociones = 0;
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
@@ -99,6 +103,7 @@ public class GeneradorDeSugerencias {
         while (atraccionesQueLeFaltarianRecorrer.size() > 0) {
             if (atraccionesMasCercanas.size() == 1) {
                 Atraccion atraccionMasCercana = atraccionesMasCercanas.iterator().next();
+                System.out.println("AtraccionMasCercana: " + atraccionMasCercana.obtenerNombre());
 
                 if (seDanLasCondiciones(atraccionMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                 //if (this.laAtraccionTieneLugarDisponible(atraccionMasCercana) && this.leAlcanzaElDinero(dineroDelUsuarioRestante, atraccionMasCercana) && this.leAlcanzaElTiempo(tiempoParaVisitasRestante, this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario)) {
@@ -177,7 +182,7 @@ public class GeneradorDeSugerencias {
             dineroSuficienteParavisitarAtraccion =  true;
         }
 
-        System.out.println("booleanDinero: " + dineroSuficienteParavisitarAtraccion);
+        //System.out.println("booleanDinero: " + dineroSuficienteParavisitarAtraccion);
         return dineroSuficienteParavisitarAtraccion;
     }
 
@@ -188,7 +193,7 @@ public class GeneradorDeSugerencias {
         if (tiempoDisponible >= (tiempoRequeridoParaAlcanzarLaAtraccion + atraccionAVisitar.obtenerDuracionPromedioDeVisitaEnMins())){
             tiempoSuficienteParaVisitarAtraccion = true;
         }
-        System.out.println("booleanTiempo: " + tiempoSuficienteParaVisitarAtraccion);
+        //System.out.println("booleanTiempo: " + tiempoSuficienteParaVisitarAtraccion);
         return tiempoSuficienteParaVisitarAtraccion;
 
     }
@@ -199,7 +204,7 @@ public class GeneradorDeSugerencias {
             lugarDisponible = true;
         }
 
-        System.out.println("boolean lugarDisponible: " + lugarDisponible);
+        //System.out.println("boolean lugarDisponible: " + lugarDisponible);
         return lugarDisponible;
     }
 
@@ -216,7 +221,7 @@ public class GeneradorDeSugerencias {
             condiciones = true;
         }
 
-        System.out.println("boolean condiciones: " + condiciones);
+        //System.out.println("boolean condiciones: " + condiciones);
         return condiciones;
     }
 
