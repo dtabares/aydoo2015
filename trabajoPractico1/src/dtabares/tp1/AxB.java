@@ -1,7 +1,6 @@
 package dtabares.tp1;
 
 
-import java.util.Iterator;
 import java.util.Set;
 
 public class AxB extends Promocion{
