@@ -36,7 +36,7 @@ public class BuscadorDeAtraccionesPorPreferenciaTest {
         Set<Atraccion> setEsperado = new HashSet();
         setEsperado.add(bilbo);
 
-        Assert.assertTrue(setEsperado.containsAll(BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(atraccionesDisponibles,TipoDeAtraccion.Degustacion)));
+        Assert.assertTrue(setEsperado.containsAll(BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(atraccionesDisponibles, TipoDeAtraccion.Degustacion)));
 
     }
 
@@ -48,5 +48,13 @@ public class BuscadorDeAtraccionesPorPreferenciaTest {
 
         Assert.assertTrue(setEsperado.containsAll(BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(atraccionesDisponibles,TipoDeAtraccion.Aventura)));
 
+    }
+
+    @Test
+    public void siLeGustanLasDePaisajeYNoHayNingunaElSetDebeEstarVacio(){
+
+        atraccionesDisponibles.remove(rivendell);
+
+        Assert.assertEquals(0,BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(atraccionesDisponibles,TipoDeAtraccion.Paisaje).size());
     }
 }
