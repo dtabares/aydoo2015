@@ -1,6 +1,7 @@
 package dtabares.tp1;
 
 
+import java.util.Calendar;
 import java.util.Set;
 
 public abstract class Promocion {
@@ -14,8 +15,10 @@ public abstract class Promocion {
 
     public abstract double calcularReduccionDeCostoTotal(Set atraccionesQueElTuristaVisitara);
 
-    public PeriodoDeVigencia obtenerPeriodoDeVigencia(){
-        return  this.periodoDeVigencia;
+    public boolean estaVigente(Calendar fechaAEvaluar){
+
+
+        return  this.periodoDeVigencia.estaVigente(fechaAEvaluar);
     }
 
 }
