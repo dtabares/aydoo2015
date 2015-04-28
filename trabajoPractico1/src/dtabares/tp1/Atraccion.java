@@ -6,7 +6,8 @@ public class Atraccion implements Comparable<Atraccion> {
     private String nombre;
     private double costo;
     private int duracionPromedioDeVisitaEnMins;
-    private  int cupoDeVisitantesDiarios;
+    private int cupoDeVisitantesDiarios;
+    private int numeroDeVisitantesActuales;
     private TipoDeAtraccion tipoDeAtraccion;
     private Posicion posicion;
 
@@ -18,10 +19,19 @@ public class Atraccion implements Comparable<Atraccion> {
         this.cupoDeVisitantesDiarios = cupoDeVisitantesDiarios;
         this.tipoDeAtraccion = tipoDeAtraccion;
         this.posicion = posicion;
+        this.numeroDeVisitantesActuales = 0;
     }
 
     public String obtenerNombre() {
         return nombre;
+    }
+
+    public int obtenerNumeroDeVisitantesActuales(){
+        return this.numeroDeVisitantesActuales;
+    }
+
+    public void setNumeroDeVisitantesActuales(int cantidadDeVisitantes){
+        this.numeroDeVisitantesActuales = cantidadDeVisitantes;
     }
 
     public double obtenerCosto() {
