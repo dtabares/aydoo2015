@@ -14,13 +14,12 @@ public class Porcentual extends Promocion{
         this.porcentajeDeDescuento = porcentajeDeDescuento;
         this.periodoDeVigencia = periodoDeVigencia;
         this.atracciocionesSujetasADescuento = atracciocionesSujetasADescuento;
-        this.reduccionDeCostoTotal = 0;
     }
 
 
     @Override
     public double calcularReduccionDeCostoTotal(Set atraccionesQueElTuristaVisitara) {
-
+        this.reduccionDeCostoTotal = 0;
         Iterator iteradorDeAtraccionesSujetasADescuento = this.atracciocionesSujetasADescuento.iterator();
        // Iterator iteradorDeAtraccionesQueElTuristaVisitara = atraccionesQueElTuristaVisitara.
         while (iteradorDeAtraccionesSujetasADescuento.hasNext()){
@@ -32,7 +31,7 @@ public class Porcentual extends Promocion{
             }
 
         }
-
+        System.out.println("reduccionDeCostoTotal en porcentual: " + reduccionDeCostoTotal);
         return this.reduccionDeCostoTotal;
     }
 }
