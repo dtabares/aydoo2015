@@ -121,14 +121,9 @@ public class GeneradorDeSugerencias {
     private void generarItinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones(){
         Itinerario itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones = new Itinerario();
         Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet<>(this.atraccionesDelParque) ;
-        //System.out.println("AtraccionesPorRecorrer: " + atraccionesQueLeFaltarianRecorrer.size());
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
-        //System.out.println("guitaEnMax: " + dineroDelUsuarioRestante);
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
-        //System.out.println("tiempoEnMAx: " + tiempoParaVisitasRestante);
         Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
-        //System.out.println("Latitud en Max : " + posicionActualDelUsuario.obtenerLatitud());
-        //System.out.println("Longitud en Max: " + posicionActualDelUsuario.obtenerLongitud());
         double reduccionGanadaEnPromociones = 0;
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
@@ -138,7 +133,6 @@ public class GeneradorDeSugerencias {
         while (atraccionesQueLeFaltarianRecorrer.size() > 0) {
             if (atraccionesMasCercanas.size() == 1) {
                 Atraccion atraccionMasCercana = atraccionesMasCercanas.iterator().next();
-                System.out.println("AtraccionMasCercana: " + atraccionMasCercana.obtenerNombre());
 
                 if (seDanLasCondiciones(atraccionMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                     itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.agregarAlitinerario(atraccionMasCercana);
@@ -157,7 +151,7 @@ public class GeneradorDeSugerencias {
             else {
                 Iterator<Atraccion> iterador = atraccionesMasCercanas.iterator();
                 boolean encontreUnaDeSuPreferencia = false;
-                //Aca modificar!!! Si hay varias a la misma distancia, debo ir a por preferencia y luego precio
+                //Si hay varias a la misma distancia, debo ir a por preferencia y luego precio
                 Atraccion atraccionMasCercana = atraccionesMasCercanas.iterator().next();;
 
                 while (iterador.hasNext() && !encontreUnaDeSuPreferencia){
@@ -216,7 +210,6 @@ public class GeneradorDeSugerencias {
             dineroSuficienteParavisitarAtraccion =  true;
         }
 
-        //System.out.println("booleanDinero: " + dineroSuficienteParavisitarAtraccion);
         return dineroSuficienteParavisitarAtraccion;
     }
 
@@ -227,7 +220,7 @@ public class GeneradorDeSugerencias {
         if (tiempoDisponible >= (tiempoRequeridoParaAlcanzarLaAtraccion + atraccionAVisitar.obtenerDuracionPromedioDeVisitaEnMins())){
             tiempoSuficienteParaVisitarAtraccion = true;
         }
-        //System.out.println("booleanTiempo: " + tiempoSuficienteParaVisitarAtraccion);
+
         return tiempoSuficienteParaVisitarAtraccion;
 
     }
@@ -238,7 +231,6 @@ public class GeneradorDeSugerencias {
             lugarDisponible = true;
         }
 
-        //System.out.println("boolean lugarDisponible: " + lugarDisponible);
         return lugarDisponible;
     }
 
@@ -254,8 +246,7 @@ public class GeneradorDeSugerencias {
         if (this.laAtraccionTieneLugarDisponible(atraccion) && this.leAlcanzaElDinero(dineroDelUsuarioRestante, atraccion) && this.leAlcanzaElTiempo(tiempoParaVisitasRestante, this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccion, posicionActualDelUsuario)) {
             condiciones = true;
         }
-
-        //System.out.println("boolean condiciones: " + condiciones);
+        
         return condiciones;
     }
 

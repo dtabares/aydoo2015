@@ -88,7 +88,7 @@ public class GeneradorDeSugerenciasTest {
 
 
    @Test
-    public void conElSiguientePerfilDeUsuarioDebe(){
+    public void conElSiguientePerfilDeUsuarioDebeDevolverRohanYLuegoMordorEnEseOrdenParaAmbosItinerarios(){
         PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
@@ -99,13 +99,87 @@ public class GeneradorDeSugerenciasTest {
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
-        System.out.println(listaDeSugerencias.size());
-        Iterator<Sugerencia> iteradorDeListaDeSugerencias = listaDeSugerencias.iterator();
 
         Assert.assertEquals("Rohan", listaDeSugerencias.get(0).obtenerItinerario().obtenerItinerario().get(0).obtenerNombre());
         Assert.assertEquals("Mordor", listaDeSugerencias.get(0).obtenerItinerario().obtenerItinerario().get(1).obtenerNombre());
         Assert.assertEquals("Rohan", listaDeSugerencias.get(1).obtenerItinerario().obtenerItinerario().get(0).obtenerNombre());
         Assert.assertEquals("Mordor", listaDeSugerencias.get(1).obtenerItinerario().obtenerItinerario().get(1).obtenerNombre());
+
+    }
+
+    @Test
+    public void conElSiguientePerfilDeUsuarioYLaSiguientePromoElDescuentoTotalDebeSerDe20(){
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
+        atraccionesSujetasAPromo.add(rohan);
+        atraccionesSujetasAPromo.add(mordor);
+        AxB promo = new AxB("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        promocionesDisponibles = new HashSet();
+        promocionesDisponibles.add(promo);
+        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+
+        List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
+
+        Assert.assertEquals(20,listaDeSugerencias.get(0).obtenerReduccionGanadaEnPromociones(),0);
+        Assert.assertEquals(20,listaDeSugerencias.get(1).obtenerReduccionGanadaEnPromociones(),0);
+
+    }
+
+    @Test
+    public void conElSiguientePerfilDeUsuarioYLasSiguientesPromoElDescuentoTotalDebeSerDeVeintiCinco(){
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
+        atraccionesSujetasAPromo.add(rohan);
+        atraccionesSujetasAPromo.add(mordor);
+        AxB promo = new AxB("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        Set<Atraccion> promoRohan = new HashSet<>();
+        promoRohan.add(rohan);
+        Porcentual promoPorcentual= new Porcentual("Diez Porciento en Rohan",10,periodoDeVigencia,promoRohan);
+        promocionesDisponibles = new HashSet();
+        promocionesDisponibles.add(promo);
+        promocionesDisponibles.add(promoPorcentual);
+        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+
+        List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
+
+        Assert.assertEquals(25,listaDeSugerencias.get(0).obtenerReduccionGanadaEnPromociones(),0);
+        Assert.assertEquals(25,listaDeSugerencias.get(1).obtenerReduccionGanadaEnPromociones(),0);
+
+    }
+
+    @Test
+    public void conElSiguientePerfilDeUsuarioYLaSiguientePromoAbsolutaElDescuentoTotalDebeSerDeDiez(){
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
+        atraccionesSujetasAPromo.add(rohan);
+        atraccionesSujetasAPromo.add(mordor);
+        Absoluta promoAbsoluta = new Absoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
+        promocionesDisponibles = new HashSet();
+        promocionesDisponibles.add(promoAbsoluta);
+        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+
+        List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
+
+        Assert.assertEquals(10,listaDeSugerencias.get(0).obtenerReduccionGanadaEnPromociones(),0);
+        Assert.assertEquals(10,listaDeSugerencias.get(1).obtenerReduccionGanadaEnPromociones(),0);
+
+    }
+
+    @Test
+    public void siLaPromoNoEstaVigenteNoDebeHaberDescuento(){
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
+        atraccionesSujetasAPromo.add(rohan);
+        atraccionesSujetasAPromo.add(mordor);
+        Absoluta promoAbsoluta = new Absoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
+        promocionesDisponibles = new HashSet();
+        promocionesDisponibles.add(promoAbsoluta);
+        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,5,3));
+
+        List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
+
+        Assert.assertEquals(0,listaDeSugerencias.get(0).obtenerReduccionGanadaEnPromociones(),0);
+        Assert.assertEquals(0,listaDeSugerencias.get(1).obtenerReduccionGanadaEnPromociones(),0);
 
     }
 }
