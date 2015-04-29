@@ -9,9 +9,6 @@ public class GeneradorDeSugerencias {
     private Set<Promocion> promociones;
     private List<Sugerencia> sugerencias;
     private Set<Atraccion> atraccionesDelParque;
-    private Set<Atraccion> atraccionesDelParqueAgregadasAlItinerarioQuePriorizaGustosDelUsuario;
-    private Set<Atraccion> atraccionesDelParqueAgregadasAlItinerarioQueCantidadDeAtraccionesVisitadas;
-    private Set<Atraccion> atraccionesDelParqueAgregadasAlItinerarioQuePriorizaGastarElMenorMontoPosible;
     private Calendar fechaDeLaVisita;
 
     public GeneradorDeSugerencias(PerfilDeUsuario perfilDeUsuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
@@ -35,7 +32,6 @@ public class GeneradorDeSugerencias {
     private void generarItinerarioPriorizandoGustosDelUsuario(){
         Itinerario itinerarioPriorizandoGustosDelUsuario = new Itinerario();
         Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet(this.atraccionesDelParque);
-        //System.out.println("AtraccionesPorRecorrer en Gusto: " + atraccionesQueLeFaltarianRecorrer.size());
         Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia = BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(this.atraccionesDelParque, this.perfilDeUsuario.obtenerTipoDeAtraccionFavorita());
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
@@ -246,7 +242,7 @@ public class GeneradorDeSugerencias {
         if (this.laAtraccionTieneLugarDisponible(atraccion) && this.leAlcanzaElDinero(dineroDelUsuarioRestante, atraccion) && this.leAlcanzaElTiempo(tiempoParaVisitasRestante, this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccion, posicionActualDelUsuario)) {
             condiciones = true;
         }
-        
+
         return condiciones;
     }
 
