@@ -44,7 +44,42 @@ public class GeneradorDeSugerencias {
         Iterator<Atraccion> iteradorDeAtraccionesPreferidas = atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.iterator();
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
-        while (iteradorDeAtraccionesPreferidas.hasNext()){
+        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
+
+        while (atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.size() >0 ){
+            if (atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas.size() == 1){
+                Atraccion atraccionPreferidaMasCercana = atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas.iterator().next();
+                if (this.seDanLasCondiciones(atraccionPreferidaMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
+                    itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionPreferidaMasCercana);
+                    dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionPreferidaMasCercana.obtenerCosto();
+                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionPreferidaMasCercana.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionPreferidaMasCercana,posicionActualDelUsuario);
+                    posicionActualDelUsuario = atraccionPreferidaMasCercana.obtenerPosicion();
+                }
+                atraccionesQueLeFaltarianRecorrer.remove(atraccionPreferidaMasCercana);
+                atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.remove(atraccionPreferidaMasCercana);
+            }
+            else{
+                //Pido la de Menor Precio.
+                Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaYTienenIgualDistanciaDeMenoCosto = BuscadorDeAtraccionesPorCosto.buscarAtraccionesPorCosto(atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas);
+
+                //Por lo explicado en los supuestos, no va a haber mas de una Atraccion llegado a este caso.
+                Atraccion atraccionAEvaluar = atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaYTienenIgualDistanciaDeMenoCosto.iterator().next();
+
+                if (this.seDanLasCondiciones(atraccionAEvaluar,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
+                    itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionAEvaluar);
+                    dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionAEvaluar.obtenerCosto();
+                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionAEvaluar,posicionActualDelUsuario);
+                    posicionActualDelUsuario = atraccionAEvaluar.obtenerPosicion();
+                }
+                atraccionesQueLeFaltarianRecorrer.remove(atraccionAEvaluar);
+                atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.remove(atraccionAEvaluar);
+            }
+
+            atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
+        }
+
+
+ /*       while (iteradorDeAtraccionesPreferidas.hasNext()){
             Atraccion atraccionPreferidaAEvaluar = iteradorDeAtraccionesPreferidas.next();
             if (this.seDanLasCondiciones(atraccionPreferidaAEvaluar,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                 itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionPreferidaAEvaluar);
@@ -53,7 +88,7 @@ public class GeneradorDeSugerencias {
                 posicionActualDelUsuario = atraccionPreferidaAEvaluar.obtenerPosicion();
             }
             atraccionesQueLeFaltarianRecorrer.remove(atraccionPreferidaAEvaluar);
-        }
+        }*/
 
         Iterator<Atraccion> iteradorDeAtraccionesQueLeFaltarianRecorrer = atraccionesQueLeFaltarianRecorrer.iterator();
         while (iteradorDeAtraccionesQueLeFaltarianRecorrer.hasNext()){
@@ -106,7 +141,6 @@ public class GeneradorDeSugerencias {
                 System.out.println("AtraccionMasCercana: " + atraccionMasCercana.obtenerNombre());
 
                 if (seDanLasCondiciones(atraccionMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
-                //if (this.laAtraccionTieneLugarDisponible(atraccionMasCercana) && this.leAlcanzaElDinero(dineroDelUsuarioRestante, atraccionMasCercana) && this.leAlcanzaElTiempo(tiempoParaVisitasRestante, this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario)) {
                     itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.agregarAlitinerario(atraccionMasCercana);
                     dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionMasCercana.obtenerCosto();
                     tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionMasCercana.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario);
@@ -123,7 +157,7 @@ public class GeneradorDeSugerencias {
             else {
                 Iterator<Atraccion> iterador = atraccionesMasCercanas.iterator();
                 boolean encontreUnaDeSuPreferencia = false;
-                //Si no encuentro ninguna de su preferencia tomo la primera que el iterador me de
+                //Aca modificar!!! Si hay varias a la misma distancia, debo ir a por preferencia y luego precio
                 Atraccion atraccionMasCercana = atraccionesMasCercanas.iterator().next();;
 
                 while (iterador.hasNext() && !encontreUnaDeSuPreferencia){

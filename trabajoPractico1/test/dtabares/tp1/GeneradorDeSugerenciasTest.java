@@ -1,3 +1,4 @@
+
 package dtabares.tp1;
 
 
@@ -35,7 +36,8 @@ public class GeneradorDeSugerenciasTest {
 
     }
 
-/*    @Test
+
+    @Test
     public void siElUsuarioNoTieneDineroLosItinerariosDebenEstarVacios(){
         PerfilDeUsuario perfilSinPlata = new PerfilDeUsuario(0,200,10,TipoDeAtraccion.Aventura,new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
@@ -62,7 +64,7 @@ public class GeneradorDeSugerenciasTest {
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfilSinTiempo,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         Assert.assertEquals(0,generador.generarSugerencia().size());
-    }*/
+    }
 
     @Test
     public void conLasCaracterísticasDeEsteUsuarioDebeDevolverRivendellEnLosItinerarios(){
@@ -80,6 +82,31 @@ public class GeneradorDeSugerenciasTest {
         Iterator<Sugerencia> iteradorDeListaDeSugerencias = listaDeSugerencias.iterator();
 
         Assert.assertEquals("Rivendell", listaDeSugerencias.get(0).obtenerItinerario().obtenerItinerario().get(0).obtenerNombre());
+        Assert.assertEquals("Rivendell", listaDeSugerencias.get(1).obtenerItinerario().obtenerItinerario().get(0).obtenerNombre());
+
+    }
+
+
+   @Test
+    public void conElSiguientePerfilDeUsuarioDebe(){
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
+        atraccionesSujetasAPromo.add(bilbo);
+        atraccionesSujetasAPromo.add(mordor);
+        AxB promo = new AxB("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        promocionesDisponibles = new HashSet();
+        promocionesDisponibles.add(promo);
+        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+
+        List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
+        System.out.println(listaDeSugerencias.size());
+        Iterator<Sugerencia> iteradorDeListaDeSugerencias = listaDeSugerencias.iterator();
+
+        Assert.assertEquals("Rohan", listaDeSugerencias.get(0).obtenerItinerario().obtenerItinerario().get(0).obtenerNombre());
+        Assert.assertEquals("Mordor", listaDeSugerencias.get(0).obtenerItinerario().obtenerItinerario().get(1).obtenerNombre());
+        Assert.assertEquals("Rohan", listaDeSugerencias.get(1).obtenerItinerario().obtenerItinerario().get(0).obtenerNombre());
+        Assert.assertEquals("Mordor", listaDeSugerencias.get(1).obtenerItinerario().obtenerItinerario().get(1).obtenerNombre());
 
     }
 }
+
