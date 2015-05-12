@@ -23,7 +23,6 @@ public class GeneradorDeSugerencias {
 
         this.generarItinerarioPriorizandoGustosDelUsuario();
         this.generarItinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones();
-       // this.generarItinerarioPriorizandoElMenorCostoPosible();
 
         return sugerencias;
 
@@ -73,18 +72,6 @@ public class GeneradorDeSugerencias {
 
             atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
         }
-
-
- /*       while (iteradorDeAtraccionesPreferidas.hasNext()){
-            Atraccion atraccionPreferidaAEvaluar = iteradorDeAtraccionesPreferidas.next();
-            if (this.seDanLasCondiciones(atraccionPreferidaAEvaluar,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
-                itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionPreferidaAEvaluar);
-                dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionPreferidaAEvaluar.obtenerCosto();
-                tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionPreferidaAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionPreferidaAEvaluar,posicionActualDelUsuario);
-                posicionActualDelUsuario = atraccionPreferidaAEvaluar.obtenerPosicion();
-            }
-            atraccionesQueLeFaltarianRecorrer.remove(atraccionPreferidaAEvaluar);
-        }*/
 
         Iterator<Atraccion> iteradorDeAtraccionesQueLeFaltarianRecorrer = atraccionesQueLeFaltarianRecorrer.iterator();
         while (iteradorDeAtraccionesQueLeFaltarianRecorrer.hasNext()){
@@ -185,17 +172,6 @@ public class GeneradorDeSugerencias {
         if (itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.obtenerItinerario().size() > 0 ) {
             this.sugerencias.add(new Sugerencia(itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones,reduccionGanadaEnPromociones));
         }
-    }
-
-    private void generarItinerarioPriorizandoElMenorCostoPosible(){
-
-        Itinerario itinerarioPriorizandoElMenorCostoPosible = new Itinerario();
-        Set<Atraccion> atraccionesQueLeFaltarianRecorrer = this.atraccionesDelParque;
-        double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
-        double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
-
-        //this.sugerencias.add();
-
     }
 
     private boolean leAlcanzaElDinero(double dineroDisponible, Atraccion atraccionAVisitar){
