@@ -36,7 +36,6 @@ public class GeneradorDeSugerencias {
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
         Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
         double reduccionGanadaEnPromociones = 0;
-        Iterator<Atraccion> iteradorDeAtraccionesPreferidas = atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.iterator();
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
         Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
