@@ -40,7 +40,7 @@ public class GeneradorDeSugerencias {
         double reduccionGanadaEnPromociones = 0;
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
-        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
+        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
 
         while (atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.size() >0 ){
             if (atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas.size() == 1){
@@ -56,7 +56,7 @@ public class GeneradorDeSugerencias {
             }
             else{
                 //Pido la de Menor Precio.
-                Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaYTienenIgualDistanciaDeMenoCosto = BuscadorDeAtraccionesPorCosto.buscarAtraccionesPorCosto(atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas);
+                Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaYTienenIgualDistanciaDeMenoCosto = this.buscadorDeAtracciones.buscarAtraccionesPorCosto(atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas);
 
                 //Por lo explicado en los supuestos, no va a haber mas de una Atraccion llegado a este caso.
                 Atraccion atraccionAEvaluar = atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaYTienenIgualDistanciaDeMenoCosto.iterator().next();
@@ -71,7 +71,7 @@ public class GeneradorDeSugerencias {
                 atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia.remove(atraccionAEvaluar);
             }
 
-            atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
+            atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
         }
 
         Iterator<Atraccion> iteradorDeAtraccionesQueLeFaltarianRecorrer = atraccionesQueLeFaltarianRecorrer.iterator();
@@ -112,7 +112,7 @@ public class GeneradorDeSugerencias {
         Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
 
         //Busco la mas cercana
-        Set<Atraccion> atraccionesMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltarianRecorrer);
+        Set<Atraccion> atraccionesMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltarianRecorrer);
 
         while (atraccionesQueLeFaltarianRecorrer.size() > 0) {
             if (atraccionesMasCercanas.size() == 1) {
@@ -157,7 +157,7 @@ public class GeneradorDeSugerencias {
 
             }
 
-            atraccionesMasCercanas = BuscadorDeAtraccionesCercanas.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltarianRecorrer);
+            atraccionesMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltarianRecorrer);
         }
 
 
