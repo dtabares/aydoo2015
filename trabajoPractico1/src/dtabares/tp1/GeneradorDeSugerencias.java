@@ -10,6 +10,7 @@ public class GeneradorDeSugerencias {
     private List<Sugerencia> sugerencias;
     private Set<Atraccion> atraccionesDelParque;
     private Calendar fechaDeLaVisita;
+    private BuscadorDeAtracciones buscadorDeAtracciones;
 
     public GeneradorDeSugerencias(PerfilDeUsuario perfilDeUsuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
         this.perfilDeUsuario = perfilDeUsuario;
@@ -17,6 +18,7 @@ public class GeneradorDeSugerencias {
         this.sugerencias = new ArrayList<>();
         this.atraccionesDelParque = atraccionesDelParque;
         this.fechaDeLaVisita = fechaDeLaVisita;
+        this.buscadorDeAtracciones = new BuscadorDeAtracciones();
     }
 
     public List<Sugerencia> generarSugerencia(){
@@ -31,7 +33,7 @@ public class GeneradorDeSugerencias {
     private void generarItinerarioPriorizandoGustosDelUsuario(){
         Itinerario itinerarioPriorizandoGustosDelUsuario = new Itinerario();
         Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet(this.atraccionesDelParque);
-        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia = BuscadorDeAtraccionesPorPreferencia.buscarAtraccionesPorPreferencia(this.atraccionesDelParque, this.perfilDeUsuario.obtenerTipoDeAtraccionFavorita());
+        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia = this.buscadorDeAtracciones.buscarAtraccionesPorPreferencia(this.atraccionesDelParque, this.perfilDeUsuario.obtenerTipoDeAtraccionFavorita());
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
         Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
