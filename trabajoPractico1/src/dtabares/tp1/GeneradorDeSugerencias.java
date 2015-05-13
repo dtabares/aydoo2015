@@ -11,6 +11,7 @@ public class GeneradorDeSugerencias {
     private Set<Atraccion> atraccionesDelParque;
     private Calendar fechaDeLaVisita;
     private BuscadorDeAtracciones buscadorDeAtracciones;
+    private CalculadorDeDistancia calculadorDeDistancia;
 
     public GeneradorDeSugerencias(PerfilDeUsuario perfilDeUsuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
         this.perfilDeUsuario = perfilDeUsuario;
@@ -19,6 +20,7 @@ public class GeneradorDeSugerencias {
         this.atraccionesDelParque = atraccionesDelParque;
         this.fechaDeLaVisita = fechaDeLaVisita;
         this.buscadorDeAtracciones = new BuscadorDeAtracciones();
+        this.calculadorDeDistancia = new CalculadorDeDistancia();
     }
 
     public List<Sugerencia> generarSugerencia(){
@@ -136,7 +138,7 @@ public class GeneradorDeSugerencias {
                 Iterator<Atraccion> iterador = atraccionesMasCercanas.iterator();
                 boolean encontreUnaDeSuPreferencia = false;
                 //Si hay varias a la misma distancia, debo ir a por preferencia y luego precio
-                Atraccion atraccionMasCercana = atraccionesMasCercanas.iterator().next();;
+                Atraccion atraccionMasCercana = atraccionesMasCercanas.iterator().next();
 
                 while (iterador.hasNext() && !encontreUnaDeSuPreferencia){
                     Atraccion atraccionAEvaluar = iterador.next();
@@ -208,7 +210,7 @@ public class GeneradorDeSugerencias {
     }
 
     private double calcularTiempoRequeridoParaAlcanzarAtraccion(double velocidadDeTraslado, Atraccion atraccionAVisitar, Posicion posicionActual){
-        double tiempoRequeridoParaAlcanzarLaAtraccion = velocidadDeTraslado/(CalculadorDeDistancia.calcularDistanciaEntreDosPosiciones(posicionActual,atraccionAVisitar.obtenerPosicion()));
+        double tiempoRequeridoParaAlcanzarLaAtraccion = velocidadDeTraslado/(this.calculadorDeDistancia.calcularDistanciaEntreDosPosiciones(posicionActual,atraccionAVisitar.obtenerPosicion()));
 
         return tiempoRequeridoParaAlcanzarLaAtraccion;
     }
