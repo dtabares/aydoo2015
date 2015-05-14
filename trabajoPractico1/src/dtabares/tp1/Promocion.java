@@ -21,4 +21,8 @@ public abstract class Promocion {
         return  this.periodoDeVigencia.estaVigente(fechaAEvaluar);
     }
 
+    public String obtenerNombre(){
+        return this.nombre;
+    }
+
 }
