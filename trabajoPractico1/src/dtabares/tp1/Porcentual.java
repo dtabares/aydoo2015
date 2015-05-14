@@ -31,7 +31,7 @@ public class Porcentual extends Promocion{
             }
 
         }
-        System.out.println("reduccionDeCostoTotal en porcentual: " + reduccionDeCostoTotal);
+
         return this.reduccionDeCostoTotal;
     }
 }
