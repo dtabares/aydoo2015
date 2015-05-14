@@ -21,9 +21,15 @@ public class UnaAtraccionGratisComprandoCiertasAtraccionesTest {
         Calendar fechaFin = new GregorianCalendar(2015,4,5);
         periodoDeVigencia = new PeriodoDeVigencia(fechaInicio,fechaFin);
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Degustacion,new Posicion(20,30)));
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Aventura, new Posicion(50, 40)));
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10)));
+        Atraccion bilbo = new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Degustacion,new Posicion(20,30));
+        bilbo.setearCantidadDeEntradasDeseadas(1);
+        Atraccion mordor = new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Aventura, new Posicion(50, 40));
+        mordor.setearCantidadDeEntradasDeseadas(1);
+        Atraccion rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
+        rivendell.setearCantidadDeEntradasDeseadas(1);
+        setDeAtraccionesQueElTuristaVisitara.add(bilbo);
+        setDeAtraccionesQueElTuristaVisitara.add(mordor);
+        setDeAtraccionesQueElTuristaVisitara.add(rivendell);
 
 
     }

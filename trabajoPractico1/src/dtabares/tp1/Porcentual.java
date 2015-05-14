@@ -21,14 +21,24 @@ public class Porcentual extends Promocion{
     public double calcularReduccionDeCostoTotal(Set atraccionesQueElTuristaVisitara) {
         this.reduccionDeCostoTotal = 0;
         Iterator iteradorDeAtraccionesSujetasADescuento = this.atracciocionesSujetasADescuento.iterator();
-       // Iterator iteradorDeAtraccionesQueElTuristaVisitara = atraccionesQueElTuristaVisitara.
+        Iterator iteradorDeAtraccionesQueElTuristaVisitara;
         while (iteradorDeAtraccionesSujetasADescuento.hasNext()){
             Atraccion atraccionSujetaAPromocion = (Atraccion) iteradorDeAtraccionesSujetasADescuento.next();
+            iteradorDeAtraccionesQueElTuristaVisitara = atraccionesQueElTuristaVisitara.iterator();
 
+            while(iteradorDeAtraccionesQueElTuristaVisitara.hasNext()){
+                Atraccion atraccionQueElTuristaVisitara = (Atraccion) iteradorDeAtraccionesQueElTuristaVisitara.next();
 
-            if (atraccionesQueElTuristaVisitara.contains(atraccionSujetaAPromocion)){
-                this.reduccionDeCostoTotal = this.reduccionDeCostoTotal + ((this.porcentajeDeDescuento * atraccionSujetaAPromocion.obtenerCosto())/100);
+                if (atraccionQueElTuristaVisitara.equals(atraccionSujetaAPromocion)){
+                    this.reduccionDeCostoTotal = this.reduccionDeCostoTotal + ((this.porcentajeDeDescuento * atraccionQueElTuristaVisitara.obtenerCostoTotal())/100);
+                }
+
             }
+
+
+/*            if (atraccionesQueElTuristaVisitara.contains(atraccionSujetaAPromocion)){
+                this.reduccionDeCostoTotal = this.reduccionDeCostoTotal + ((this.porcentajeDeDescuento * atraccionSujetaAPromocion.obtenerCostoTotal())/100);
+            }*/
 
         }
 

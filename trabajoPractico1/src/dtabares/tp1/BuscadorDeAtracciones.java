@@ -71,15 +71,15 @@ public class BuscadorDeAtracciones {
         while (iteradorDeAtraccionesDisponibles.hasNext()){
             atraccionAEvaluar = iteradorDeAtraccionesDisponibles.next();
 
-            if(menorCosto == -1 || atraccionAEvaluar.obtenerCosto() < menorCosto){
+            if(menorCosto == -1 || atraccionAEvaluar.obtenerCostoTotal() < menorCosto){
                 if(!atraccionesConMenorCosto.isEmpty()){
                     atraccionesConMenorCosto.clear();
                 }
-                menorCosto = atraccionAEvaluar.obtenerCosto();
+                menorCosto = atraccionAEvaluar.obtenerCostoTotal();
                 atraccionesConMenorCosto.add(atraccionAEvaluar);
             }
             else{
-                if (atraccionAEvaluar.obtenerCosto() == menorCosto){
+                if (atraccionAEvaluar.obtenerCostoTotal() == menorCosto){
                     atraccionesConMenorCosto.add(atraccionAEvaluar);
                 }
             }

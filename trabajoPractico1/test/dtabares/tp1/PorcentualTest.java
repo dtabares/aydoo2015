@@ -24,9 +24,12 @@ public class PorcentualTest {
         Calendar fechaFin = new GregorianCalendar(2015,4,5);
         periodoDeVigencia = new PeriodoDeVigencia(fechaInicio,fechaFin);
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
-        //Atraccion atraccion = new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Paisaje,new Posicion(20,30));
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Paisaje,new Posicion(20,30)));
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Paisaje, new Posicion(50, 40)));
+        Atraccion bilbo = new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Paisaje,new Posicion(20,30));
+        bilbo.setearCantidadDeEntradasDeseadas(1);
+        Atraccion mordor = new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Paisaje, new Posicion(50, 40));
+        mordor.setearCantidadDeEntradasDeseadas(1);
+        setDeAtraccionesQueElTuristaVisitara.add(bilbo);
+        setDeAtraccionesQueElTuristaVisitara.add(mordor);
 
 
     }
@@ -64,7 +67,9 @@ public class PorcentualTest {
         setDeVariasAtracciones.add(new Atraccion("Rohan",600,30,50,TipoDeAtraccion.Aventura,new Posicion(100,30)));
         setDeVariasAtracciones.add(new Atraccion("Rivendell",500,30,50,TipoDeAtraccion.Paisaje,new Posicion(100,60)));
         promoConUnaSolaAtraccion = new Porcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeVariasAtracciones);
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("Rohan",600,30,50,TipoDeAtraccion.Aventura,new Posicion(100,30)));
+        Atraccion rohan = new Atraccion("Rohan",600,30,50,TipoDeAtraccion.Aventura,new Posicion(100,30));
+        rohan.setearCantidadDeEntradasDeseadas(1);
+        setDeAtraccionesQueElTuristaVisitara.add(rohan);
         Assert.assertEquals(80, promoConUnaSolaAtraccion.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
     }
 }

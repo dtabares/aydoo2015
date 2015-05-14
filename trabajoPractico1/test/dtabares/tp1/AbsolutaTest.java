@@ -21,10 +21,16 @@ public class AbsolutaTest {
         Calendar fechaInicio = new GregorianCalendar(2015,4,1);
         Calendar fechaFin = new GregorianCalendar(2015,4,5);
         periodoDeVigencia = new PeriodoDeVigencia(fechaInicio,fechaFin);
+        Atraccion laCasaDeBilbo = new Atraccion("La Casa De Bilbo", 200, 30, 50, TipoDeAtraccion.Degustacion, new Posicion(20, 30));
+        Atraccion mordor = new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Aventura, new Posicion(50, 40));
+        laCasaDeBilbo.setearCantidadDeEntradasDeseadas(1);
+        mordor.setearCantidadDeEntradasDeseadas(1);
+        Atraccion rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
+        rivendell.setearCantidadDeEntradasDeseadas(1);
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Degustacion,new Posicion(20,30)));
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Aventura, new Posicion(50, 40)));
-        setDeAtraccionesQueElTuristaVisitara.add(new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10)));
+        setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
+        setDeAtraccionesQueElTuristaVisitara.add(mordor);
+        setDeAtraccionesQueElTuristaVisitara.add(rivendell);
 
 
     }
@@ -40,8 +46,12 @@ public class AbsolutaTest {
     @Test
     public void siElTuristaVisitara3AtraccionesDeLasCuales2FormanUnPaqueteConDescuentoEseDescuentoDebeSerDe300() {
         Set<Atraccion> setDeDosAtracciones = new HashSet();
-        setDeDosAtracciones.add(new Atraccion("La Casa De Bilbo", 200, 30, 50, TipoDeAtraccion.Degustacion, new Posicion(20, 30)));
-        setDeDosAtracciones.add(new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10)));
+        Atraccion laCasaDeBilbo = new Atraccion("La Casa De Bilbo", 200, 30, 50, TipoDeAtraccion.Degustacion, new Posicion(20, 30));
+        laCasaDeBilbo.setearCantidadDeEntradasDeseadas(1);
+        setDeDosAtracciones.add(laCasaDeBilbo);
+        Atraccion rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
+        rivendell.setearCantidadDeEntradasDeseadas(1);
+        setDeDosAtracciones.add(rivendell);
         Absoluta promoBilboMasRivendell = new Absoluta("Promo La Casa de Bilbo + Rivendell en un día", periodoDeVigencia,setDeDosAtracciones,400);
 
         Assert.assertEquals(300,promoBilboMasRivendell.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);

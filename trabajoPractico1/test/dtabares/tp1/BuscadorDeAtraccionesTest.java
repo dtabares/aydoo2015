@@ -23,9 +23,13 @@ public class BuscadorDeAtraccionesTest {
     @Before
     public void prepararAmbiente(){
         mordor = new Atraccion("Mordor",20,50,10,TipoDeAtraccion.Aventura,new Posicion(200,20));
+        mordor.setearCantidadDeEntradasDeseadas(1);
         rivendell = new Atraccion("Rivendell",300,40,50,TipoDeAtraccion.Paisaje,new Posicion(-5,5));
+        rivendell.setearCantidadDeEntradasDeseadas(1);
         rohan = new Atraccion("Rohan",20,50,10,TipoDeAtraccion.Aventura,new Posicion(-10,-10));
+        rohan.setearCantidadDeEntradasDeseadas(1);
         bilbo = new Atraccion("La Casa De Bilbo",50,50,10,TipoDeAtraccion.Degustacion,new Posicion(10,10));
+        bilbo.setearCantidadDeEntradasDeseadas(1);
         buscadorDeAtracciones = new BuscadorDeAtracciones();
         atraccionesDisponibles = new HashSet();
 

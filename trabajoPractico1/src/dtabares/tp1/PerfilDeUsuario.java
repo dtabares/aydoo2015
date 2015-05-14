@@ -7,14 +7,16 @@ public class PerfilDeUsuario {
     private double velocidadDeTraslado;
     private TipoDeAtraccion tipoDeAtraccionFavorita;
     private Posicion posicionActual;
+    private Posicion domicilio;
 
-    public PerfilDeUsuario(double presupuestoDisponible, double tiempoDisponibleParaVisitas, double velocidadDeTraslado, TipoDeAtraccion tipoDeAtraccionFavorita, Posicion posicionActual){
+    public PerfilDeUsuario(double presupuestoDisponible, double tiempoDisponibleParaVisitas, double velocidadDeTraslado, TipoDeAtraccion tipoDeAtraccionFavorita, Posicion posicionActual, Posicion domicilio){
 
         this.presupuestoDisponible = presupuestoDisponible;
         this.tiempoDisponibleParaVisitas = tiempoDisponibleParaVisitas;
         this.velocidadDeTraslado = velocidadDeTraslado;
         this.tipoDeAtraccionFavorita = tipoDeAtraccionFavorita;
         this.posicionActual = posicionActual;
+        this.domicilio = domicilio;
     }
 
     public double obtenerPresupuestoDisponible() {
@@ -35,5 +37,9 @@ public class PerfilDeUsuario {
 
     public Posicion obtenerPosicionActual(){
         return  this.posicionActual;
+    }
+
+    public Posicion obtenerDomicilio() {
+        return this.domicilio;
     }
 }

@@ -1,6 +1,7 @@
 package dtabares.tp1;
 
 
+import java.util.Iterator;
 import java.util.Set;
 
 public class UnaAtraccionGratisComprandoCiertasAtracciones extends Promocion{
@@ -21,10 +22,16 @@ public class UnaAtraccionGratisComprandoCiertasAtracciones extends Promocion{
     public double calcularReduccionDeCostoTotal(Set atraccionesQueElTuristaVisitara) {
 
         if(atraccionesQueElTuristaVisitara.containsAll(this.atracciocionesSujetasADescuento) && atraccionesQueElTuristaVisitara.contains(atraccionQueSeDescuentaCostoEnSuTotalidad) && ! this.atracciocionesSujetasADescuento.isEmpty()) {
+            Iterator iteradorDeAtraccionesQueElTuristaVisitara = atraccionesQueElTuristaVisitara.iterator();
 
-            this.reduccionDeCostoTotal = atraccionQueSeDescuentaCostoEnSuTotalidad.obtenerCosto();
+            while (iteradorDeAtraccionesQueElTuristaVisitara.hasNext()){
+                Atraccion atraccionQueElTuristaVisitara = (Atraccion) iteradorDeAtraccionesQueElTuristaVisitara.next();
+                if(atraccionQueElTuristaVisitara.equals(atraccionQueSeDescuentaCostoEnSuTotalidad)){
+                    this.reduccionDeCostoTotal = atraccionQueElTuristaVisitara.obtenerCostoTotal();
+                }
+            }
+
         }
-
         return this.reduccionDeCostoTotal;
     }
 }

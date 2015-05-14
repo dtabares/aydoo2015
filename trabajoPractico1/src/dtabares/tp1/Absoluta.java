@@ -27,7 +27,7 @@ public class Absoluta extends Promocion{
                 Atraccion atraccionQueElTuristaVisitara = (Atraccion) iteradorDeAtraccionesQueElTuristaVisitara.next();
 
                 if (this.atracciocionesSujetasADescuento.contains(atraccionQueElTuristaVisitara)) {
-                    costoOriginal = costoOriginal + atraccionQueElTuristaVisitara.obtenerCosto();
+                    costoOriginal = costoOriginal + atraccionQueElTuristaVisitara.obtenerCostoTotal();
                 }
             }
             this.reduccionDeCostoTotal = costoOriginal - costoPorPaquete;

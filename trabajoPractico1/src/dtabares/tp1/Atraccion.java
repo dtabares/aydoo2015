@@ -4,22 +4,26 @@ public class Atraccion implements Comparable<Atraccion> {
 
 
     private String nombre;
-    private double costo;
+    private double costoUnitario;
+    private double costoTotal;
+    private int cantidadDeEntradas;
     private int duracionPromedioDeVisitaEnMins;
     private int cupoDeVisitantesDiarios;
     private int numeroDeVisitantesActuales;
     private TipoDeAtraccion tipoDeAtraccion;
     private Posicion posicion;
 
-    public Atraccion (String nombre, double costo, int duracionPromedioDeVisitaEnMins, int cupoDeVisitantesDiarios, TipoDeAtraccion tipoDeAtraccion, Posicion posicion){
+    public Atraccion (String nombre, double costoUnitario, int duracionPromedioDeVisitaEnMins, int cupoDeVisitantesDiarios, TipoDeAtraccion tipoDeAtraccion, Posicion posicion){
 
         this.nombre = nombre;
-        this.costo = costo;
+        this.costoUnitario = costoUnitario;
         this.duracionPromedioDeVisitaEnMins = duracionPromedioDeVisitaEnMins;
         this.cupoDeVisitantesDiarios = cupoDeVisitantesDiarios;
         this.tipoDeAtraccion = tipoDeAtraccion;
         this.posicion = posicion;
         this.numeroDeVisitantesActuales = 0;
+        this.costoTotal = 0;
+        this.cantidadDeEntradas=0;
     }
 
     public String obtenerNombre() {
@@ -34,8 +38,8 @@ public class Atraccion implements Comparable<Atraccion> {
         this.numeroDeVisitantesActuales = cantidadDeVisitantes;
     }
 
-    public double obtenerCosto() {
-        return costo;
+    public double obtenerCostoUnitario() {
+        return costoUnitario;
     }
 
     public int obtenerDuracionPromedioDeVisitaEnMins() {
@@ -53,6 +57,20 @@ public class Atraccion implements Comparable<Atraccion> {
     public Posicion obtenerPosicion() {
         return posicion;
     }
+
+    public void setearCantidadDeEntradasDeseadas(int cantidadDeEntradas){
+        this.cantidadDeEntradas = cantidadDeEntradas;
+    }
+
+    public int obtenerCantidadDeEntradasDeseadas(){
+        return this.cantidadDeEntradas;
+    }
+
+    public double obtenerCostoTotal(){
+        return (this.cantidadDeEntradas * this.costoUnitario);
+    }
+
+
 
     @Override
     public int compareTo(Atraccion otraAtraccion) {

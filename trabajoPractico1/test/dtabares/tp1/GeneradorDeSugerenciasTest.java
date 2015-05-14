@@ -22,9 +22,13 @@ public class GeneradorDeSugerenciasTest {
     @Before
     public void prepararAmbiente(){
         mordor = new Atraccion("Mordor",20,15,100,TipoDeAtraccion.Aventura,new Posicion(200,20));
+        mordor.setearCantidadDeEntradasDeseadas(1);
         rivendell = new Atraccion("Rivendell",300,40,50,TipoDeAtraccion.Paisaje,new Posicion(-5,5));
+        rivendell.setearCantidadDeEntradasDeseadas(1);
         rohan = new Atraccion("Rohan",50,10,40,TipoDeAtraccion.Aventura,new Posicion(-10,-10));
+        rohan.setearCantidadDeEntradasDeseadas(1);
         bilbo = new Atraccion("La Casa De Bilbo",350,30,10,TipoDeAtraccion.Degustacion,new Posicion(10,10));
+        bilbo.setearCantidadDeEntradasDeseadas(1);
         Calendar fechaInicio = new GregorianCalendar(2015,4,1);
         Calendar fechaFin = new GregorianCalendar(2015,4,5);
         periodoDeVigencia = new PeriodoDeVigencia(fechaInicio,fechaFin);
@@ -39,7 +43,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void siElUsuarioNoTieneDineroLosItinerariosDebenEstarVacios(){
-        PerfilDeUsuario perfilSinPlata = new PerfilDeUsuario(0,200,10,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfilSinPlata = new PerfilDeUsuario(0,200,10,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
@@ -54,7 +58,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void siElUsuarioNoTieneTiempoLosItinerariosDebenEstarVacios(){
-        PerfilDeUsuario perfilSinTiempo = new PerfilDeUsuario(200,0,10,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfilSinTiempo = new PerfilDeUsuario(200,0,10,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
@@ -68,7 +72,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void conLasCaracterísticasDeEsteUsuarioDebeDevolverRivendellEnLosItinerarios(){
-        PerfilDeUsuario perfil = new PerfilDeUsuario(300,500,40,TipoDeAtraccion.Paisaje,new Posicion(0,0));
+        PerfilDeUsuario perfil = new PerfilDeUsuario(300,500,40,TipoDeAtraccion.Paisaje,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
@@ -89,7 +93,7 @@ public class GeneradorDeSugerenciasTest {
 
    @Test
     public void conElSiguientePerfilDeUsuarioDebeDevolverRohanYLuegoMordorEnEseOrdenParaAmbosItinerarios(){
-        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
@@ -109,7 +113,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void conElSiguientePerfilDeUsuarioYLaSiguientePromoElDescuentoTotalDebeSerDe20(){
-        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
@@ -127,7 +131,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void conElSiguientePerfilDeUsuarioYLasSiguientesPromoElDescuentoTotalDebeSerDeVeintiCinco(){
-        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
@@ -149,7 +153,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void conElSiguientePerfilDeUsuarioYLaSiguientePromoAbsolutaElDescuentoTotalDebeSerDeDiez(){
-        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
@@ -167,7 +171,7 @@ public class GeneradorDeSugerenciasTest {
 
     @Test
     public void siLaPromoNoEstaVigenteNoDebeHaberDescuento(){
-        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0));
+        PerfilDeUsuario perfil = new PerfilDeUsuario(70,500,40,TipoDeAtraccion.Aventura,new Posicion(0,0),new Posicion(0,0));
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
