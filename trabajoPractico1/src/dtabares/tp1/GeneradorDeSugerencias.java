@@ -12,6 +12,7 @@ public class GeneradorDeSugerencias {
     private Calendar fechaDeLaVisita;
     private BuscadorDeAtracciones buscadorDeAtracciones;
     private CalculadorDeDistancia calculadorDeDistancia;
+    private AplicadorDePromociones aplicadorDePromociones;
 
     public GeneradorDeSugerencias(PerfilDeUsuario perfilDeUsuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
         this.perfilDeUsuario = perfilDeUsuario;
@@ -90,14 +91,10 @@ public class GeneradorDeSugerencias {
         }
 
         Set<Atraccion> atraccionesQueVisitaraElTurista = new HashSet(itinerarioPriorizandoGustosDelUsuario.obtenerItinerario());
-        while(iteradorDePromociones.hasNext()){
-            Promocion promocion = iteradorDePromociones.next();
 
-            if(promocion.estaVigente(this.fechaDeLaVisita)){
-                reduccionGanadaEnPromociones = reduccionGanadaEnPromociones + promocion.calcularReduccionDeCostoTotal(atraccionesQueVisitaraElTurista);
-            }
-
-        }
+        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista);
+        this.aplicadorDePromociones.aplicarPromociones();
+        reduccionGanadaEnPromociones = this.aplicadorDePromociones.obtenerReduccionGanadaEnPromociones();
         if (itinerarioPriorizandoGustosDelUsuario.obtenerItinerario().size() >0) {
             this.sugerencias.add(new Sugerencia(itinerarioPriorizandoGustosDelUsuario,reduccionGanadaEnPromociones));
         }
@@ -164,14 +161,11 @@ public class GeneradorDeSugerencias {
 
 
         Set<Atraccion> atraccionesQueVisitaraElTurista = new HashSet(itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.obtenerItinerario());
-        while(iteradorDePromociones.hasNext()){
-            Promocion promocion = iteradorDePromociones.next();
 
-            if(promocion.estaVigente(this.fechaDeLaVisita)){
-                reduccionGanadaEnPromociones = reduccionGanadaEnPromociones + promocion.calcularReduccionDeCostoTotal(atraccionesQueVisitaraElTurista);
-            }
+        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista);
+        this.aplicadorDePromociones.aplicarPromociones();
+        reduccionGanadaEnPromociones = this.aplicadorDePromociones.obtenerReduccionGanadaEnPromociones();
 
-        }
         if (itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.obtenerItinerario().size() > 0 ) {
             this.sugerencias.add(new Sugerencia(itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones,reduccionGanadaEnPromociones));
         }
