@@ -57,7 +57,7 @@ public class AplicadorDePromocionesTest {
         Assert.assertEquals(20, aplicadorDePromociones.obtenerReduccionGanadaEnPromociones(), 0);
     }
 
-/*    @Test
+   @Test
     public void conLasSiguientesCondicionesLasPromocionesAplicadasDebeSerPromoMordorVaGratis(){
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
@@ -73,7 +73,7 @@ public class AplicadorDePromocionesTest {
 
 
         Assert.assertEquals("Promo Mordor Va Gratis", aplicadorDePromociones.obtenerPromocionesAplicadas().iterator().next().obtenerNombre());
-    }*/
+    }
 
 
 }
