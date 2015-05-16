@@ -13,28 +13,38 @@ public class AplicadorDePromociones {
     private double reduccionGanadaEnPromociones;
     private Calendar fechaDeLaVisita;
     private Set<Atraccion> atraccionesQueVisitaraElTurista;
+    private PerfilDeUsuario perfilDeUsuario;
 
 
-    public AplicadorDePromociones(Set<Promocion> promociones, Calendar fechaDeLaVisita,Set<Atraccion> atraccionesQueVisitaraElTurista){
+    public AplicadorDePromociones(Set<Promocion> promociones, Calendar fechaDeLaVisita,Set<Atraccion> atraccionesQueVisitaraElTurista,PerfilDeUsuario perfilDeUsuario){
         this.promocionesDisponibles = promociones;
         this.promocionesAplicadas = new HashSet<>();
         this.reduccionGanadaEnPromociones = 0;
         this.fechaDeLaVisita = fechaDeLaVisita;
         this.atraccionesQueVisitaraElTurista = atraccionesQueVisitaraElTurista;
+        this.perfilDeUsuario = perfilDeUsuario;
     }
 
     public void aplicarPromociones(){
-        Iterator<Promocion> iteradorDePromociones = this.promocionesDisponibles.iterator();
         double reduccionGanada = 0;
-        while(iteradorDePromociones.hasNext()){
+        boolean salir = false;
+        Iterator<Promocion> iteradorDePromociones = this.promocionesDisponibles.iterator();
+        while(iteradorDePromociones.hasNext() && salir == false){
             Promocion promocion = iteradorDePromociones.next();
 
             if(promocion.estaVigente(this.fechaDeLaVisita)){
                 reduccionGanada = promocion.calcularReduccionDeCostoTotal(atraccionesQueVisitaraElTurista);
-
                 if (reduccionGanada > 0){
-                    this.reduccionGanadaEnPromociones = this.reduccionGanadaEnPromociones + reduccionGanada;
-                    this.promocionesAplicadas.add(promocion);
+                    if(promocion.getClass().getName().equals("dtabares.tp1.PromoExtranjero")){
+                        salir = true;
+                        this.reduccionGanadaEnPromociones = reduccionGanada;
+                        this.promocionesAplicadas.clear();
+                        this.promocionesAplicadas.add(promocion);
+                    }
+                    else {
+                        this.reduccionGanadaEnPromociones = this.reduccionGanadaEnPromociones + reduccionGanada;
+                        this.promocionesAplicadas.add(promocion);
+                    }
                 }
             }
         }
@@ -47,4 +57,5 @@ public class AplicadorDePromociones {
     public Set<Promocion> obtenerPromocionesAplicadas(){
         return this.promocionesAplicadas;
     }
+
 }

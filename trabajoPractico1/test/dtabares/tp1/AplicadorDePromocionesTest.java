@@ -17,6 +17,7 @@ public class AplicadorDePromocionesTest {
     private Set<Atraccion> atraccionesQueVisitaraElTurista;
     private Set<Promocion> promocionesDisponibles;
     private PeriodoDeVigencia periodoDeVigencia;
+    private PerfilDeUsuario perfilDeUsuario;
 
     @Before
     public void prepararAmbiente(){
@@ -36,6 +37,7 @@ public class AplicadorDePromocionesTest {
         atraccionesDisponibles.add(rivendell);
         atraccionesDisponibles.add(rohan);
         atraccionesDisponibles.add(bilbo);
+        perfilDeUsuario = new PerfilDeUsuario(500,1000,20,TipoDeAtraccion.Aventura,new Posicion(-400,-200),new Posicion(-400,-200));
 
     }
 
@@ -50,7 +52,7 @@ public class AplicadorDePromocionesTest {
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);
         atraccionesQueVisitaraElTurista.add(mordor);
-        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista);
+        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista,perfilDeUsuario);
         aplicadorDePromociones.aplicarPromociones();
 
 
@@ -68,11 +70,31 @@ public class AplicadorDePromocionesTest {
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);
         atraccionesQueVisitaraElTurista.add(mordor);
-        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista);
+        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista,perfilDeUsuario);
         aplicadorDePromociones.aplicarPromociones();
 
 
         Assert.assertEquals("Promo Mordor Va Gratis", aplicadorDePromociones.obtenerPromocionesAplicadas().iterator().next().obtenerNombre());
+    }
+
+    @Test
+    public void conLasSiguientesCondicionesLasPromocionesAplicadasDebeSerPromoExtranjero(){
+        Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
+        atraccionesSujetasAPromo.add(rohan);
+        atraccionesSujetasAPromo.add(mordor);
+        UnaAtraccionGratisComprandoCiertasAtracciones unaAtraccionGratisComprandoCiertasAtracciones = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromoExtranjero promoExtranjero = new PromoExtranjero("promo extranjero",periodoDeVigencia,perfilDeUsuario);
+        promocionesDisponibles = new HashSet();
+        promocionesDisponibles.add(unaAtraccionGratisComprandoCiertasAtracciones);
+        promocionesDisponibles.add(promoExtranjero);
+        atraccionesQueVisitaraElTurista = new HashSet<>();
+        atraccionesQueVisitaraElTurista.add(rohan);
+        atraccionesQueVisitaraElTurista.add(mordor);
+        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista,perfilDeUsuario);
+        aplicadorDePromociones.aplicarPromociones();
+
+
+        Assert.assertEquals("promo extranjero", aplicadorDePromociones.obtenerPromocionesAplicadas().iterator().next().obtenerNombre());
     }
 
 
