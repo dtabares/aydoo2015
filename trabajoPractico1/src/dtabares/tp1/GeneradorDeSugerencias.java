@@ -40,8 +40,7 @@ public class GeneradorDeSugerencias {
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
         Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
-        double reduccionGanadaEnPromociones = 0;
-        Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
+        double reduccionGanadaEnPromociones;
 
         Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
 
@@ -107,8 +106,7 @@ public class GeneradorDeSugerencias {
         double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
         double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
         Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
-        double reduccionGanadaEnPromociones = 0;
-        Iterator<Promocion> iteradorDePromociones = this.promociones.iterator();
+        double reduccionGanadaEnPromociones;
 
         //Busco la mas cercana
         Set<Atraccion> atraccionesMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltarianRecorrer);
