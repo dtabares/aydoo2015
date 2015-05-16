@@ -92,7 +92,7 @@ public class GeneradorDeSugerencias {
 
         Set<Atraccion> atraccionesQueVisitaraElTurista = new HashSet(itinerarioPriorizandoGustosDelUsuario.obtenerItinerario());
 
-        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista);
+        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista,this.perfilDeUsuario);
         this.aplicadorDePromociones.aplicarPromociones();
         reduccionGanadaEnPromociones = this.aplicadorDePromociones.obtenerReduccionGanadaEnPromociones();
         if (itinerarioPriorizandoGustosDelUsuario.obtenerItinerario().size() >0) {
@@ -162,7 +162,7 @@ public class GeneradorDeSugerencias {
 
         Set<Atraccion> atraccionesQueVisitaraElTurista = new HashSet(itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.obtenerItinerario());
 
-        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista);
+        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista,this.perfilDeUsuario);
         this.aplicadorDePromociones.aplicarPromociones();
         reduccionGanadaEnPromociones = this.aplicadorDePromociones.obtenerReduccionGanadaEnPromociones();
 
