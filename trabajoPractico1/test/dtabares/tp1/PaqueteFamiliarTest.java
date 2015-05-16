@@ -12,10 +12,7 @@ import java.util.Set;
 
 public class PaqueteFamiliarTest {
 
-
-    private Promocion promoSinAtracciones;
-    private Set<Atraccion> setDeAtraccionesQueElTuristaVisitara;
-    private Promocion promoConUnaSolaAtraccion;
+        private Set<Atraccion> setDeAtraccionesQueElTuristaVisitara;
     private PeriodoDeVigencia periodoDeVigencia;
     private Atraccion laCasaDeBilbo;
     private Atraccion mordor;
@@ -35,12 +32,6 @@ public class PaqueteFamiliarTest {
         laCasaDeBilbo.setearCantidadDeEntradasDeseadas(3);
         mordor.setearCantidadDeEntradasDeseadas(4);
         rivendell.setearCantidadDeEntradasDeseadas(10);
-
-
-/*        setDeAtraccionesQueElTuristaVisitara = new HashSet();
-        setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
-        setDeAtraccionesQueElTuristaVisitara.add(mordor);
-        setDeAtraccionesQueElTuristaVisitara.add(rivendell);*/
     }
 
     @Test
