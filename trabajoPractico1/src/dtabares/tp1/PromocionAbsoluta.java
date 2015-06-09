@@ -4,12 +4,12 @@ package dtabares.tp1;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Absoluta extends Promocion{
+public class PromocionAbsoluta extends Promocion{
 
 
     private double costoPorPaquete;
 
-    public Absoluta(String nombre,PeriodoDeVigencia periodoDeVigencia,Set atracciocionesSujetasADescuento,double costoPorPaquete){
+    public PromocionAbsoluta(String nombre, PeriodoDeVigencia periodoDeVigencia, Set atracciocionesSujetasADescuento, double costoPorPaquete){
         this.nombre = nombre;
         this.periodoDeVigencia = periodoDeVigencia;
         this.atracciocionesSujetasADescuento = atracciocionesSujetasADescuento;

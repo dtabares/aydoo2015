@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AbsolutaTest {
+public class PromocionAbsolutaTest {
 
     private Promocion promoSinAtracciones;
     private Set<Atraccion> setDeAtraccionesQueElTuristaVisitara;
@@ -38,7 +38,7 @@ public class AbsolutaTest {
     @Test
     public void siNoHayPromocioneslaReduccionDeCostoTotalDebeSerCero() {
         Set<Atraccion> setVacio = new HashSet();
-        promoSinAtracciones = new Absoluta("Promo Sin Atracciones",periodoDeVigencia,setVacio,0);
+        promoSinAtracciones = new PromocionAbsoluta("Promo Sin Atracciones",periodoDeVigencia,setVacio,0);
         Assert.assertEquals(0, promoSinAtracciones.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
 
     }
@@ -52,7 +52,7 @@ public class AbsolutaTest {
         Atraccion rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
         rivendell.setearCantidadDeEntradasDeseadas(1);
         setDeDosAtracciones.add(rivendell);
-        Absoluta promoBilboMasRivendell = new Absoluta("Promo La Casa de Bilbo + Rivendell en un día", periodoDeVigencia,setDeDosAtracciones,400);
+        PromocionAbsoluta promoBilboMasRivendell = new PromocionAbsoluta("Promo La Casa de Bilbo + Rivendell en un día", periodoDeVigencia,setDeDosAtracciones,400);
 
         Assert.assertEquals(300,promoBilboMasRivendell.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 
@@ -65,7 +65,7 @@ public class AbsolutaTest {
         setDeAtracciones.add(new Atraccion("Minas Tirith", 10, 10, 50, TipoDeAtraccion.Degustacion, new Posicion(35, 42)));
         setDeAtracciones.add(new Atraccion("Ravenhill", 10, 10, 50, TipoDeAtraccion.Degustacion, new Posicion(35, 42)));
 
-        Absoluta promo = new Absoluta("Promo",periodoDeVigencia,setDeAtracciones,400);
+        PromocionAbsoluta promo = new PromocionAbsoluta("Promo",periodoDeVigencia,setDeAtracciones,400);
 
         Assert.assertEquals(0,promo.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 

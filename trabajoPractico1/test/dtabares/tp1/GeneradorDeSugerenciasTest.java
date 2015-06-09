@@ -157,7 +157,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        Absoluta promoAbsoluta = new Absoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
+        PromocionAbsoluta promoAbsoluta = new PromocionAbsoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promoAbsoluta);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
@@ -175,7 +175,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        Absoluta promoAbsoluta = new Absoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
+        PromocionAbsoluta promoAbsoluta = new PromocionAbsoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promoAbsoluta);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,5,3));
