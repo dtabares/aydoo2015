@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PaqueteFamiliarTest {
+public class PromocionPaqueteFamiliarTest {
 
         private Set<Atraccion> setDeAtraccionesQueElTuristaVisitara;
     private PeriodoDeVigencia periodoDeVigencia;
@@ -39,9 +39,9 @@ public class PaqueteFamiliarTest {
 
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
         setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
-        PaqueteFamiliar paqueteFamiliar = new PaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
+        PromocionPaqueteFamiliar promocionPaqueteFamiliar = new PromocionPaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
 
-        Assert.assertEquals(0, paqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
+        Assert.assertEquals(0, promocionPaqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
 
     }
 
@@ -49,9 +49,9 @@ public class PaqueteFamiliarTest {
     public void siCompraCuatroEntradasDebeAplicarElDescuentoDel10PorcientoYElDescuentoDebeSer8(){
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
         setDeAtraccionesQueElTuristaVisitara.add(mordor);
-        PaqueteFamiliar paqueteFamiliar = new PaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
+        PromocionPaqueteFamiliar promocionPaqueteFamiliar = new PromocionPaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
 
-        Assert.assertEquals(8,paqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
+        Assert.assertEquals(8, promocionPaqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 
     }
 
@@ -59,9 +59,9 @@ public class PaqueteFamiliarTest {
     public void siCompra10EntradasDebeAplicarElDescuentoBaseYElAdicionalYElDescuentoDebeSer1100(){
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
         setDeAtraccionesQueElTuristaVisitara.add(rivendell);
-        PaqueteFamiliar paqueteFamiliar = new PaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
+        PromocionPaqueteFamiliar promocionPaqueteFamiliar = new PromocionPaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
 
-        Assert.assertEquals(1100,paqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
+        Assert.assertEquals(1100, promocionPaqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class PaqueteFamiliarTest {
         setDeAtraccionesQueElTuristaVisitara.add(mordor);
         setDeAtraccionesQueElTuristaVisitara.add(rivendell);
         setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
-        PaqueteFamiliar paqueteFamiliar = new PaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
-        Assert.assertEquals(1108,paqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
+        PromocionPaqueteFamiliar promocionPaqueteFamiliar = new PromocionPaqueteFamiliar("Super Paquete Familiar",periodoDeVigencia);
+        Assert.assertEquals(1108, promocionPaqueteFamiliar.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
     }
 }

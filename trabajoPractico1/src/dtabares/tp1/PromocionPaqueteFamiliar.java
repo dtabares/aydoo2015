@@ -5,13 +5,13 @@ import java.util.Set;
 
 
 
-public class PaqueteFamiliar extends Promocion{
+public class PromocionPaqueteFamiliar extends Promocion{
 
     private double cantidadMinimaDeEntradas;
     private double descuentoBase;
     private double descuentoAdicional;
 
-    public PaqueteFamiliar(String nombre, PeriodoDeVigencia periodoDeVigencia){
+    public PromocionPaqueteFamiliar(String nombre, PeriodoDeVigencia periodoDeVigencia){
         descuentoBase = 0.1;
         descuentoAdicional = 0.3;
         this.cantidadMinimaDeEntradas = 4;
