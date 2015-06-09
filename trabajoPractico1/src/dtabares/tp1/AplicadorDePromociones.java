@@ -13,16 +13,16 @@ public class AplicadorDePromociones {
     private double reduccionGanadaEnPromociones;
     private Calendar fechaDeLaVisita;
     private Set<Atraccion> atraccionesQueVisitaraElTurista;
-    private PerfilDeUsuario perfilDeUsuario;
+    private Usuario usuario;
 
 
-    public AplicadorDePromociones(Set<Promocion> promociones, Calendar fechaDeLaVisita,Set<Atraccion> atraccionesQueVisitaraElTurista,PerfilDeUsuario perfilDeUsuario){
+    public AplicadorDePromociones(Set<Promocion> promociones, Calendar fechaDeLaVisita,Set<Atraccion> atraccionesQueVisitaraElTurista,Usuario usuario){
         this.promocionesDisponibles = promociones;
         this.promocionesAplicadas = new HashSet<>();
         this.reduccionGanadaEnPromociones = 0;
         this.fechaDeLaVisita = fechaDeLaVisita;
         this.atraccionesQueVisitaraElTurista = atraccionesQueVisitaraElTurista;
-        this.perfilDeUsuario = perfilDeUsuario;
+        this.usuario = usuario;
     }
 
     public void aplicarPromociones(){

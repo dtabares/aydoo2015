@@ -17,7 +17,7 @@ public class AplicadorDePromocionesTest {
     private Set<Atraccion> atraccionesQueVisitaraElTurista;
     private Set<Promocion> promocionesDisponibles;
     private PeriodoDeVigencia periodoDeVigencia;
-    private PerfilDeUsuario perfilDeUsuario;
+    private Usuario usuario;
 
     @Before
     public void prepararAmbiente(){
@@ -37,7 +37,7 @@ public class AplicadorDePromocionesTest {
         atraccionesDisponibles.add(rivendell);
         atraccionesDisponibles.add(rohan);
         atraccionesDisponibles.add(bilbo);
-        perfilDeUsuario = new PerfilDeUsuario(500,1000,20,TipoDeAtraccion.Aventura,new Posicion(-400,-200),new Posicion(-400,-200));
+        usuario = new Usuario(500,1000,20,TipoDeAtraccion.Aventura,new Posicion(-400,-200),new Posicion(-400,-200));
 
     }
 
@@ -52,7 +52,7 @@ public class AplicadorDePromocionesTest {
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);
         atraccionesQueVisitaraElTurista.add(mordor);
-        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista,perfilDeUsuario);
+        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista, usuario);
         aplicadorDePromociones.aplicarPromociones();
 
 
@@ -70,7 +70,7 @@ public class AplicadorDePromocionesTest {
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);
         atraccionesQueVisitaraElTurista.add(mordor);
-        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista,perfilDeUsuario);
+        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista, usuario);
         aplicadorDePromociones.aplicarPromociones();
 
 
@@ -83,14 +83,14 @@ public class AplicadorDePromocionesTest {
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promocionUnaAtraccionGratisComprandoCiertasAtracciones = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
-        PromocionExtranjero promocionExtranjero = new PromocionExtranjero("promo extranjero",periodoDeVigencia,perfilDeUsuario);
+        PromocionExtranjero promocionExtranjero = new PromocionExtranjero("promo extranjero",periodoDeVigencia, usuario);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promocionUnaAtraccionGratisComprandoCiertasAtracciones);
         promocionesDisponibles.add(promocionExtranjero);
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);
         atraccionesQueVisitaraElTurista.add(mordor);
-        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista,perfilDeUsuario);
+        AplicadorDePromociones aplicadorDePromociones = new AplicadorDePromociones(promocionesDisponibles,new GregorianCalendar(2015,4,3),atraccionesQueVisitaraElTurista, usuario);
         aplicadorDePromociones.aplicarPromociones();
 
 

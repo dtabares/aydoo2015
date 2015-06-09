@@ -5,7 +5,7 @@ import java.util.*;
 
 public class GeneradorDeSugerencias {
 
-    private PerfilDeUsuario perfilDeUsuario;
+    private Usuario usuario;
     private Set<Promocion> promociones;
     private List<Sugerencia> sugerencias;
     private Set<Atraccion> atraccionesDelParque;
@@ -13,8 +13,8 @@ public class GeneradorDeSugerencias {
     private BuscadorDeAtracciones buscadorDeAtracciones;
     private AplicadorDePromociones aplicadorDePromociones;
 
-    public GeneradorDeSugerencias(PerfilDeUsuario perfilDeUsuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
-        this.perfilDeUsuario = perfilDeUsuario;
+    public GeneradorDeSugerencias(Usuario usuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
+        this.usuario = usuario;
         this.promociones = promociones;
         this.sugerencias = new ArrayList<>();
         this.atraccionesDelParque = atraccionesDelParque;
@@ -34,10 +34,10 @@ public class GeneradorDeSugerencias {
     private void generarItinerarioPriorizandoGustosDelUsuario(){
         Itinerario itinerarioPriorizandoGustosDelUsuario = new Itinerario();
         Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet(this.atraccionesDelParque);
-        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia = this.buscadorDeAtracciones.buscarAtraccionesPorPreferencia(this.atraccionesDelParque, this.perfilDeUsuario.obtenerTipoDeAtraccionFavorita());
-        double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
-        double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
-        Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
+        Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia = this.buscadorDeAtracciones.buscarAtraccionesPorPreferencia(this.atraccionesDelParque, this.usuario.obtenerTipoDeAtraccionFavorita());
+        double dineroDelUsuarioRestante = this.usuario.obtenerPresupuestoDisponible();
+        double tiempoParaVisitasRestante = this.usuario.obtenerTiempoDisponibleParaVisitas();
+        Posicion posicionActualDelUsuario = this.usuario.obtenerPosicionActual();
         double reduccionGanadaEnPromociones;
 
         Set<Atraccion> atraccionesQueLeFaltanRecorrerYSonDeSuPreferenciaMasCercanas = this.buscadorDeAtracciones.buscarAtraccionMasCercana(posicionActualDelUsuario, atraccionesQueLeFaltanRecorrerYSonDeSuPreferencia);
@@ -48,7 +48,7 @@ public class GeneradorDeSugerencias {
                 if (this.seDanLasCondiciones(atraccionPreferidaMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                     itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionPreferidaMasCercana);
                     dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionPreferidaMasCercana.obtenerCostoTotal();
-                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionPreferidaMasCercana.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionPreferidaMasCercana,posicionActualDelUsuario);
+                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionPreferidaMasCercana.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.usuario.obtenerVelocidadDeTraslado(),atraccionPreferidaMasCercana,posicionActualDelUsuario);
                     posicionActualDelUsuario = atraccionPreferidaMasCercana.obtenerPosicion();
                 }
                 atraccionesQueLeFaltarianRecorrer.remove(atraccionPreferidaMasCercana);
@@ -64,7 +64,7 @@ public class GeneradorDeSugerencias {
                 if (this.seDanLasCondiciones(atraccionAEvaluar,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                     itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario(atraccionAEvaluar);
                     dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionAEvaluar.obtenerCostoTotal();
-                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionAEvaluar,posicionActualDelUsuario);
+                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.usuario.obtenerVelocidadDeTraslado(),atraccionAEvaluar,posicionActualDelUsuario);
                     posicionActualDelUsuario = atraccionAEvaluar.obtenerPosicion();
                 }
                 atraccionesQueLeFaltarianRecorrer.remove(atraccionAEvaluar);
@@ -81,7 +81,7 @@ public class GeneradorDeSugerencias {
             if(this.seDanLasCondiciones(atraccionAEvaluar,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                 itinerarioPriorizandoGustosDelUsuario.agregarAlitinerario((atraccionAEvaluar));
                 dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionAEvaluar.obtenerCostoTotal();
-                tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(),atraccionAEvaluar,posicionActualDelUsuario);
+                tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionAEvaluar.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.usuario.obtenerVelocidadDeTraslado(),atraccionAEvaluar,posicionActualDelUsuario);
                 posicionActualDelUsuario = atraccionAEvaluar.obtenerPosicion();
             }
 
@@ -89,7 +89,7 @@ public class GeneradorDeSugerencias {
 
         Set<Atraccion> atraccionesQueVisitaraElTurista = new HashSet(itinerarioPriorizandoGustosDelUsuario.obtenerItinerario());
 
-        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista,this.perfilDeUsuario);
+        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista,this.usuario);
         this.aplicadorDePromociones.aplicarPromociones();
         reduccionGanadaEnPromociones = this.aplicadorDePromociones.obtenerReduccionGanadaEnPromociones();
         if (itinerarioPriorizandoGustosDelUsuario.obtenerItinerario().size() >0) {
@@ -101,9 +101,9 @@ public class GeneradorDeSugerencias {
     private void generarItinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones(){
         Itinerario itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones = new Itinerario();
         Set<Atraccion> atraccionesQueLeFaltarianRecorrer = new HashSet<>(this.atraccionesDelParque) ;
-        double dineroDelUsuarioRestante = this.perfilDeUsuario.obtenerPresupuestoDisponible();
-        double tiempoParaVisitasRestante = this.perfilDeUsuario.obtenerTiempoDisponibleParaVisitas();
-        Posicion posicionActualDelUsuario = this.perfilDeUsuario.obtenerPosicionActual();
+        double dineroDelUsuarioRestante = this.usuario.obtenerPresupuestoDisponible();
+        double tiempoParaVisitasRestante = this.usuario.obtenerTiempoDisponibleParaVisitas();
+        Posicion posicionActualDelUsuario = this.usuario.obtenerPosicionActual();
         double reduccionGanadaEnPromociones;
 
         //Busco la mas cercana
@@ -116,7 +116,7 @@ public class GeneradorDeSugerencias {
                 if (seDanLasCondiciones(atraccionMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                     itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.agregarAlitinerario(atraccionMasCercana);
                     dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionMasCercana.obtenerCostoTotal();
-                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionMasCercana.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario);
+                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionMasCercana.obtenerDuracionPromedioDeVisitaEnMins() - this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.usuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario);
 
                     //muevo al usuario a la nueva posicion en la simulacion
                     posicionActualDelUsuario = atraccionMasCercana.obtenerPosicion();
@@ -135,7 +135,7 @@ public class GeneradorDeSugerencias {
 
                 while (iterador.hasNext() && !encontreUnaDeSuPreferencia){
                     Atraccion atraccionAEvaluar = iterador.next();
-                    if (atraccionAEvaluar.obtenerTipoDeAtraccion().equals(perfilDeUsuario.obtenerTipoDeAtraccionFavorita())){
+                    if (atraccionAEvaluar.obtenerTipoDeAtraccion().equals(usuario.obtenerTipoDeAtraccionFavorita())){
                         atraccionMasCercana = atraccionAEvaluar;
                         encontreUnaDeSuPreferencia = true;
                     }
@@ -144,7 +144,7 @@ public class GeneradorDeSugerencias {
                 if (seDanLasCondiciones(atraccionMasCercana,dineroDelUsuarioRestante,tiempoParaVisitasRestante,posicionActualDelUsuario)){
                     itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.agregarAlitinerario(atraccionMasCercana);
                     dineroDelUsuarioRestante = dineroDelUsuarioRestante - atraccionMasCercana.obtenerCostoTotal();
-                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionMasCercana.obtenerDuracionPromedioDeVisitaEnMins() -this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario);
+                    tiempoParaVisitasRestante = tiempoParaVisitasRestante - atraccionMasCercana.obtenerDuracionPromedioDeVisitaEnMins() -this.calcularTiempoRequeridoParaAlcanzarAtraccion(this.usuario.obtenerVelocidadDeTraslado(), atraccionMasCercana, posicionActualDelUsuario);
                     //muevo al usuario a la nueva posicion en la simulacion
                     posicionActualDelUsuario = atraccionMasCercana.obtenerPosicion();
                 }
@@ -158,7 +158,7 @@ public class GeneradorDeSugerencias {
 
         Set<Atraccion> atraccionesQueVisitaraElTurista = new HashSet(itinerarioPriorizandoRecorrerLaMaxCantidadDeAtracciones.obtenerItinerario());
 
-        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista,this.perfilDeUsuario);
+        this.aplicadorDePromociones = new AplicadorDePromociones(promociones,this.fechaDeLaVisita,atraccionesQueVisitaraElTurista,this.usuario);
         this.aplicadorDePromociones.aplicarPromociones();
         reduccionGanadaEnPromociones = this.aplicadorDePromociones.obtenerReduccionGanadaEnPromociones();
 
@@ -208,7 +208,7 @@ public class GeneradorDeSugerencias {
     private boolean seDanLasCondiciones(Atraccion atraccion, double dineroDelUsuarioRestante,double tiempoParaVisitasRestante,Posicion posicionActualDelUsuario){
         boolean condiciones = false;
 
-        if (this.laAtraccionTieneLugarDisponible(atraccion) && this.leAlcanzaElDinero(dineroDelUsuarioRestante, atraccion) && this.leAlcanzaElTiempo(tiempoParaVisitasRestante, this.perfilDeUsuario.obtenerVelocidadDeTraslado(), atraccion, posicionActualDelUsuario)) {
+        if (this.laAtraccionTieneLugarDisponible(atraccion) && this.leAlcanzaElDinero(dineroDelUsuarioRestante, atraccion) && this.leAlcanzaElTiempo(tiempoParaVisitasRestante, this.usuario.obtenerVelocidadDeTraslado(), atraccion, posicionActualDelUsuario)) {
             condiciones = true;
         }
 

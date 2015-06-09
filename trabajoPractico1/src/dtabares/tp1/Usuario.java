@@ -1,6 +1,6 @@
 package dtabares.tp1;
 
-public class PerfilDeUsuario {
+public class Usuario {
 
     private double presupuestoDisponible;
     private double tiempoDisponibleParaVisitas;
@@ -9,7 +9,7 @@ public class PerfilDeUsuario {
     private Posicion posicionActual;
     private Posicion domicilio;
 
-    public PerfilDeUsuario(double presupuestoDisponible, double tiempoDisponibleParaVisitas, double velocidadDeTraslado, TipoDeAtraccion tipoDeAtraccionFavorita, Posicion posicionActual, Posicion domicilio){
+    public Usuario(double presupuestoDisponible, double tiempoDisponibleParaVisitas, double velocidadDeTraslado, TipoDeAtraccion tipoDeAtraccionFavorita, Posicion posicionActual, Posicion domicilio){
 
         this.presupuestoDisponible = presupuestoDisponible;
         this.tiempoDisponibleParaVisitas = tiempoDisponibleParaVisitas;

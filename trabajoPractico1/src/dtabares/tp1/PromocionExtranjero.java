@@ -7,14 +7,14 @@ import java.util.Set;
 public class PromocionExtranjero extends Promocion{
 
 
-    private PerfilDeUsuario perfilDeUsuario;
+    private Usuario usuario;
     private BuscadorDeAtracciones buscadorDeAtracciones;
     private double distanciaMinimaParaQueLaPromocionAplique;
 
-    public PromocionExtranjero(String nombre, PeriodoDeVigencia periodoDeVigencia, PerfilDeUsuario perfilDeUsuario){
+    public PromocionExtranjero(String nombre, PeriodoDeVigencia periodoDeVigencia, Usuario usuario){
         this.nombre = nombre;
         this.periodoDeVigencia = periodoDeVigencia;
-        this.perfilDeUsuario = perfilDeUsuario;
+        this.usuario = usuario;
         this.buscadorDeAtracciones = new BuscadorDeAtracciones();
         this.reduccionDeCostoTotal = 0;
         this.distanciaMinimaParaQueLaPromocionAplique = 200;
@@ -23,7 +23,7 @@ public class PromocionExtranjero extends Promocion{
 
     @Override
     public double calcularReduccionDeCostoTotal(Set atraccionesQueElTuristaVisitara) {
-        Set<Atraccion> atraccionesMasCercanaAlDomicilioDelUsuario = this.buscadorDeAtracciones.buscarAtraccionMasCercana(perfilDeUsuario.obtenerDomicilio(),atraccionesQueElTuristaVisitara);
+        Set<Atraccion> atraccionesMasCercanaAlDomicilioDelUsuario = this.buscadorDeAtracciones.buscarAtraccionMasCercana(usuario.obtenerDomicilio(),atraccionesQueElTuristaVisitara);
         if (atraccionesMasCercanaAlDomicilioDelUsuario.size()>0){
             Atraccion AtraccionMasCercana = atraccionesMasCercanaAlDomicilioDelUsuario.iterator().next();
             if(this.laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique(AtraccionMasCercana)){
@@ -41,7 +41,7 @@ public class PromocionExtranjero extends Promocion{
 
     private boolean laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique(Atraccion atraccionMasCercana){
         boolean laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique = false;
-        double distanciaEntreElDomicilioYlaAtraccionMasCercana = this.perfilDeUsuario.obtenerDomicilio().calcularDistanciaHastaOtraPosicion(atraccionMasCercana.obtenerPosicion());
+        double distanciaEntreElDomicilioYlaAtraccionMasCercana = this.usuario.obtenerDomicilio().calcularDistanciaHastaOtraPosicion(atraccionMasCercana.obtenerPosicion());
         if (distanciaEntreElDomicilioYlaAtraccionMasCercana >= 200){
             laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique = true;
         }

@@ -40,13 +40,13 @@ public class PromocionExtranjeroTest {
     @Test
     public void SiViveAMenosDe200DeLaAtraccionMasCercanaElDescuentoDebeSerCero(){
         Posicion domicilio = new Posicion(0,-0);
-        PerfilDeUsuario perfilDeUsuario = new PerfilDeUsuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio);
+        Usuario usuario = new Usuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio);
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
         setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
         setDeAtraccionesQueElTuristaVisitara.add(mordor);
         setDeAtraccionesQueElTuristaVisitara.add(rivendell);
 
-        PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia,perfilDeUsuario);
+        PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia, usuario);
 
         Assert.assertEquals(0, promocionExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 
@@ -55,13 +55,13 @@ public class PromocionExtranjeroTest {
      @Test
     public void SiViveAMasDe200DeLaAtraccionMasCercanaElDescuentoDebeSer2840(){
          Posicion domicilio = new Posicion(-150,-100);
-         PerfilDeUsuario perfilDeUsuario = new PerfilDeUsuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio);
+         Usuario usuario = new Usuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio);
          setDeAtraccionesQueElTuristaVisitara = new HashSet();
          setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
          setDeAtraccionesQueElTuristaVisitara.add(mordor);
          setDeAtraccionesQueElTuristaVisitara.add(rivendell);
 
-         PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia,perfilDeUsuario);
+         PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia, usuario);
 
          Assert.assertEquals(2840, promocionExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
     }
