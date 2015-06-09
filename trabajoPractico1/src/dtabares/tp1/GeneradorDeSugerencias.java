@@ -11,7 +11,6 @@ public class GeneradorDeSugerencias {
     private Set<Atraccion> atraccionesDelParque;
     private Calendar fechaDeLaVisita;
     private BuscadorDeAtracciones buscadorDeAtracciones;
-    private CalculadorDeDistancia calculadorDeDistancia;
     private AplicadorDePromociones aplicadorDePromociones;
 
     public GeneradorDeSugerencias(PerfilDeUsuario perfilDeUsuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
@@ -21,7 +20,6 @@ public class GeneradorDeSugerencias {
         this.atraccionesDelParque = atraccionesDelParque;
         this.fechaDeLaVisita = fechaDeLaVisita;
         this.buscadorDeAtracciones = new BuscadorDeAtracciones();
-        this.calculadorDeDistancia = new CalculadorDeDistancia();
     }
 
     public List<Sugerencia> generarSugerencia(){
@@ -202,7 +200,7 @@ public class GeneradorDeSugerencias {
     }
 
     private double calcularTiempoRequeridoParaAlcanzarAtraccion(double velocidadDeTraslado, Atraccion atraccionAVisitar, Posicion posicionActual){
-        double tiempoRequeridoParaAlcanzarLaAtraccion = velocidadDeTraslado/(this.calculadorDeDistancia.calcularDistanciaEntreDosPosiciones(posicionActual,atraccionAVisitar.obtenerPosicion()));
+        double tiempoRequeridoParaAlcanzarLaAtraccion = velocidadDeTraslado/(posicionActual.calcularDistanciaHastaOtraPosicion(atraccionAVisitar.obtenerPosicion()));
 
         return tiempoRequeridoParaAlcanzarLaAtraccion;
     }

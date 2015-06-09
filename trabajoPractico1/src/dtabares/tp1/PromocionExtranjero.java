@@ -41,8 +41,7 @@ public class PromocionExtranjero extends Promocion{
 
     private boolean laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique(Atraccion atraccionMasCercana){
         boolean laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique = false;
-        CalculadorDeDistancia calculadorDeDistancia = new CalculadorDeDistancia();
-        double distanciaEntreElDomicilioYlaAtraccionMasCercana = calculadorDeDistancia.calcularDistanciaEntreDosPosiciones(this.perfilDeUsuario.obtenerDomicilio(),atraccionMasCercana.obtenerPosicion());
+        double distanciaEntreElDomicilioYlaAtraccionMasCercana = this.perfilDeUsuario.obtenerDomicilio().calcularDistanciaHastaOtraPosicion(atraccionMasCercana.obtenerPosicion());
         if (distanciaEntreElDomicilioYlaAtraccionMasCercana >= 200){
             laDistanciaEntreElDomicilioDelUsuarioYLaAtraccionMasCercanaEsMayorOIgualALaDistanciaMinimaParaQueLaPromoAplique = true;
         }

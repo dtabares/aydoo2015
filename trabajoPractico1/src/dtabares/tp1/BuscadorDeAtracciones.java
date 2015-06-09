@@ -8,12 +8,6 @@ import java.util.Set;
 
 public class BuscadorDeAtracciones {
 
-    private CalculadorDeDistancia calculadorDeDistancia;
-
-    public BuscadorDeAtracciones(){
-        this.calculadorDeDistancia = new CalculadorDeDistancia();
-    }
-
     //Devuelve un Set De Atracciones ya que puede que 2 o mas esten a la misma distancia
     public Set<Atraccion> buscarAtraccionMasCercana(Posicion posicionActual,Set<Atraccion> atraccionesDisponibles){
 
@@ -26,13 +20,12 @@ public class BuscadorDeAtracciones {
         if(iterador.hasNext()){
             //Por ser la primera, es la mas cercana.
             atracciónConLaDistanciaMasBajaEncontrada = (Atraccion) iterador.next();
-            distanciaAlaAtraccionMasCercana = calculadorDeDistancia.calcularDistanciaEntreDosPosiciones(posicionActual,atracciónConLaDistanciaMasBajaEncontrada.obtenerPosicion());
+            distanciaAlaAtraccionMasCercana = posicionActual.calcularDistanciaHastaOtraPosicion(atracciónConLaDistanciaMasBajaEncontrada.obtenerPosicion());
             atraccionesMasCercanas.add(atracciónConLaDistanciaMasBajaEncontrada);
 
             while(iterador.hasNext()){
                 Atraccion atraccionAComparar  = (Atraccion) iterador.next();
-                distanciaDeLaAtraccionAComparar = calculadorDeDistancia.calcularDistanciaEntreDosPosiciones(posicionActual,atraccionAComparar.obtenerPosicion());
-
+                distanciaDeLaAtraccionAComparar = posicionActual.calcularDistanciaHastaOtraPosicion(atraccionAComparar.obtenerPosicion());
 
                 //Si esto es True quiere decir que el usuario estaba parado en esta atraccion
                 if (distanciaAlaAtraccionMasCercana == 0){
