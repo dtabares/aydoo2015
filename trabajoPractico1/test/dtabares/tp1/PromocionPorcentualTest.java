@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class PorcentualTest {
+public class PromocionPorcentualTest {
 
     private Promocion promoSinAtracciones;
     private Set<Atraccion> setDeAtraccionesQueElTuristaVisitara;
@@ -37,7 +37,7 @@ public class PorcentualTest {
     @Test
     public void siNoHayPromocioneslaReduccionDeCostoTotalDebeSerCero() {
         Set<Atraccion> setVacio = new HashSet();
-        promoSinAtracciones = new Porcentual("Promo Sin Atracciones",10,periodoDeVigencia,setVacio);
+        promoSinAtracciones = new PromocionPorcentual("Promo Sin Atracciones",10,periodoDeVigencia,setVacio);
         Assert.assertEquals(0, promoSinAtracciones.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
 
     }
@@ -46,7 +46,7 @@ public class PorcentualTest {
     public void conDescuentoDe10PorcientoEnUnaSolaAtraccionQueVale200ElDescuentoDebeSer20CuandoElSetDeAtraccionesConDescuentoTieneUnaSolaAtraccion(){
         Set<Atraccion> setDeUnaSolaAtraccion = new HashSet();
         setDeUnaSolaAtraccion.add(new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Paisaje,new Posicion(20,30)));
-        promoConUnaSolaAtraccion = new Porcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeUnaSolaAtraccion);
+        promoConUnaSolaAtraccion = new PromocionPorcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeUnaSolaAtraccion);
         Assert.assertEquals(20, promoConUnaSolaAtraccion.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
     }
 
@@ -56,7 +56,7 @@ public class PorcentualTest {
         setDeVariasAtracciones.add(new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Degustacion,new Posicion(20,30)));
         setDeVariasAtracciones.add(new Atraccion("Rohan",500,30,50,TipoDeAtraccion.Aventura,new Posicion(100,30)));
         setDeVariasAtracciones.add(new Atraccion("Rivendell",500,30,50,TipoDeAtraccion.Paisaje,new Posicion(100,60)));
-        promoConUnaSolaAtraccion = new Porcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeVariasAtracciones);
+        promoConUnaSolaAtraccion = new PromocionPorcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeVariasAtracciones);
         Assert.assertEquals(20, promoConUnaSolaAtraccion.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
     }
 
@@ -66,7 +66,7 @@ public class PorcentualTest {
         setDeVariasAtracciones.add(new Atraccion("La Casa De Bilbo",200,30,50,TipoDeAtraccion.Degustacion,new Posicion(20,30)));
         setDeVariasAtracciones.add(new Atraccion("Rohan",600,30,50,TipoDeAtraccion.Aventura,new Posicion(100,30)));
         setDeVariasAtracciones.add(new Atraccion("Rivendell",500,30,50,TipoDeAtraccion.Paisaje,new Posicion(100,60)));
-        promoConUnaSolaAtraccion = new Porcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeVariasAtracciones);
+        promoConUnaSolaAtraccion = new PromocionPorcentual("Promo Casa De Bilbo 10%",10,periodoDeVigencia,setDeVariasAtracciones);
         Atraccion rohan = new Atraccion("Rohan",600,30,50,TipoDeAtraccion.Aventura,new Posicion(100,30));
         rohan.setearCantidadDeEntradasDeseadas(1);
         setDeAtraccionesQueElTuristaVisitara.add(rohan);

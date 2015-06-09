@@ -138,10 +138,10 @@ public class GeneradorDeSugerenciasTest {
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         Set<Atraccion> promoRohan = new HashSet<>();
         promoRohan.add(rohan);
-        Porcentual promoPorcentual= new Porcentual("Diez Porciento en Rohan",10,periodoDeVigencia,promoRohan);
+        PromocionPorcentual promoPromocionPorcentual = new PromocionPorcentual("Diez Porciento en Rohan",10,periodoDeVigencia,promoRohan);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
-        promocionesDisponibles.add(promoPorcentual);
+        promocionesDisponibles.add(promoPromocionPorcentual);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();

@@ -4,12 +4,12 @@ package dtabares.tp1;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Porcentual extends Promocion{
+public class PromocionPorcentual extends Promocion{
 
 
     private double porcentajeDeDescuento;
 
-    public Porcentual(String nombre, double porcentajeDeDescuento,PeriodoDeVigencia periodoDeVigencia,Set atracciocionesSujetasADescuento){
+    public PromocionPorcentual(String nombre, double porcentajeDeDescuento, PeriodoDeVigencia periodoDeVigencia, Set atracciocionesSujetasADescuento){
         this.nombre = nombre;
         this.porcentajeDeDescuento = porcentajeDeDescuento;
         this.periodoDeVigencia = periodoDeVigencia;
