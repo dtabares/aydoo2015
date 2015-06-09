@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class PromoExtranjeroTest {
+public class PromocionExtranjeroTest {
 
 
     private Promocion promoSinAtracciones;
@@ -46,9 +46,9 @@ public class PromoExtranjeroTest {
         setDeAtraccionesQueElTuristaVisitara.add(mordor);
         setDeAtraccionesQueElTuristaVisitara.add(rivendell);
 
-        PromoExtranjero promoExtranjero = new PromoExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia,perfilDeUsuario);
+        PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia,perfilDeUsuario);
 
-        Assert.assertEquals(0, promoExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
+        Assert.assertEquals(0, promocionExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 
     }
 
@@ -61,9 +61,9 @@ public class PromoExtranjeroTest {
          setDeAtraccionesQueElTuristaVisitara.add(mordor);
          setDeAtraccionesQueElTuristaVisitara.add(rivendell);
 
-         PromoExtranjero promoExtranjero = new PromoExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia,perfilDeUsuario);
+         PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia,perfilDeUsuario);
 
-         Assert.assertEquals(2840, promoExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
+         Assert.assertEquals(2840, promocionExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
     }
 
 }

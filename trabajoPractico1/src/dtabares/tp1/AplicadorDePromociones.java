@@ -35,7 +35,7 @@ public class AplicadorDePromociones {
             if(promocion.estaVigente(this.fechaDeLaVisita)){
                 reduccionGanada = promocion.calcularReduccionDeCostoTotal(atraccionesQueVisitaraElTurista);
                 if (reduccionGanada > 0){
-                    if(promocion.getClass().getName().equals("dtabares.tp1.PromoExtranjero")){
+                    if(promocion.getClass().getName().equals("dtabares.tp1.PromocionExtranjero")){
                         salir = true;
                         this.reduccionGanadaEnPromociones = reduccionGanada;
                         this.promocionesAplicadas.clear();

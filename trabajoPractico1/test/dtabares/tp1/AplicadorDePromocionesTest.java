@@ -83,10 +83,10 @@ public class AplicadorDePromocionesTest {
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promocionUnaAtraccionGratisComprandoCiertasAtracciones = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
-        PromoExtranjero promoExtranjero = new PromoExtranjero("promo extranjero",periodoDeVigencia,perfilDeUsuario);
+        PromocionExtranjero promocionExtranjero = new PromocionExtranjero("promo extranjero",periodoDeVigencia,perfilDeUsuario);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promocionUnaAtraccionGratisComprandoCiertasAtracciones);
-        promocionesDisponibles.add(promoExtranjero);
+        promocionesDisponibles.add(promocionExtranjero);
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);
         atraccionesQueVisitaraElTurista.add(mordor);

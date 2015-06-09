@@ -4,14 +4,14 @@ import java.util.Iterator;
 import java.util.Set;
 
 
-public class PromoExtranjero extends Promocion{
+public class PromocionExtranjero extends Promocion{
 
 
     private PerfilDeUsuario perfilDeUsuario;
     private BuscadorDeAtracciones buscadorDeAtracciones;
     private double distanciaMinimaParaQueLaPromocionAplique;
 
-    public PromoExtranjero(String nombre,PeriodoDeVigencia periodoDeVigencia, PerfilDeUsuario perfilDeUsuario){
+    public PromocionExtranjero(String nombre, PeriodoDeVigencia periodoDeVigencia, PerfilDeUsuario perfilDeUsuario){
         this.nombre = nombre;
         this.periodoDeVigencia = periodoDeVigencia;
         this.perfilDeUsuario = perfilDeUsuario;
