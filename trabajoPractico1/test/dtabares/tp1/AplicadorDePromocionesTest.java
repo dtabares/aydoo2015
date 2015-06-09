@@ -46,7 +46,7 @@ public class AplicadorDePromocionesTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         atraccionesQueVisitaraElTurista = new HashSet<>();
@@ -64,7 +64,7 @@ public class AplicadorDePromocionesTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         atraccionesQueVisitaraElTurista = new HashSet<>();
@@ -82,10 +82,10 @@ public class AplicadorDePromocionesTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones unaAtraccionGratisComprandoCiertasAtracciones = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promocionUnaAtraccionGratisComprandoCiertasAtracciones = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         PromoExtranjero promoExtranjero = new PromoExtranjero("promo extranjero",periodoDeVigencia,perfilDeUsuario);
         promocionesDisponibles = new HashSet();
-        promocionesDisponibles.add(unaAtraccionGratisComprandoCiertasAtracciones);
+        promocionesDisponibles.add(promocionUnaAtraccionGratisComprandoCiertasAtracciones);
         promocionesDisponibles.add(promoExtranjero);
         atraccionesQueVisitaraElTurista = new HashSet<>();
         atraccionesQueVisitaraElTurista.add(rohan);

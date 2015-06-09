@@ -47,7 +47,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfilSinPlata,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
@@ -62,7 +62,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfilSinTiempo,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
@@ -76,7 +76,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
@@ -97,7 +97,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(bilbo);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
@@ -117,7 +117,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
@@ -135,7 +135,7 @@ public class GeneradorDeSugerenciasTest {
         Set<Atraccion> atraccionesSujetasAPromo = new HashSet();
         atraccionesSujetasAPromo.add(rohan);
         atraccionesSujetasAPromo.add(mordor);
-        UnaAtraccionGratisComprandoCiertasAtracciones promo = new UnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
+        PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         Set<Atraccion> promoRohan = new HashSet<>();
         promoRohan.add(rohan);
         Porcentual promoPorcentual= new Porcentual("Diez Porciento en Rohan",10,periodoDeVigencia,promoRohan);
