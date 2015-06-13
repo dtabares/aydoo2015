@@ -10,7 +10,6 @@ public class SecretariaDeTurismo {
     private List<Sugerencia> sugerencias;
     private Set<Atraccion> atraccionesDelParque;
     private Calendar fechaDeLaVisita;
-    //private BuscadorDeAtracciones buscadorDeAtracciones;
     private AplicadorDePromociones aplicadorDePromociones;
 
     public SecretariaDeTurismo(Usuario usuario, Set<Promocion> promociones, Set<Atraccion> atraccionesDelParque, Calendar fechaDeLaVisita){
@@ -19,7 +18,6 @@ public class SecretariaDeTurismo {
         this.sugerencias = new ArrayList<>();
         this.atraccionesDelParque = atraccionesDelParque;
         this.fechaDeLaVisita = fechaDeLaVisita;
-        //this.buscadorDeAtracciones = new BuscadorDeAtracciones();
     }
 
     public List<Sugerencia> generarSugerencia(){
