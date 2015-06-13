@@ -30,7 +30,7 @@ public class PromocionPorcentual extends Promocion{
                 Atraccion atraccionQueElTuristaVisitara = (Atraccion) iteradorDeAtraccionesQueElTuristaVisitara.next();
 
                 if (atraccionQueElTuristaVisitara.equals(atraccionSujetaAPromocion)){
-                    this.reduccionDeCostoTotal = this.reduccionDeCostoTotal + ((this.porcentajeDeDescuento * atraccionQueElTuristaVisitara.obtenerCostoTotal())/100);
+                    this.reduccionDeCostoTotal = this.reduccionDeCostoTotal + ((this.porcentajeDeDescuento * atraccionQueElTuristaVisitara.getCosto())/100);
                 }
 
             }

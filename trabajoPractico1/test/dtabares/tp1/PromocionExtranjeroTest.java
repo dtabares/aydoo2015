@@ -30,17 +30,12 @@ public class PromocionExtranjeroTest {
         laCasaDeBilbo = new Atraccion("La Casa De Bilbo", 200, 30, 50, TipoDeAtraccion.Degustacion, new Posicion(20, 30));
         mordor = new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Aventura, new Posicion(50, 40));
         rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
-
-
-        laCasaDeBilbo.setearCantidadDeEntradasDeseadas(3);
-        mordor.setearCantidadDeEntradasDeseadas(4);
-        rivendell.setearCantidadDeEntradasDeseadas(10);
     }
 
     @Test
     public void SiViveAMenosDe200DeLaAtraccionMasCercanaElDescuentoDebeSerCero(){
         Posicion domicilio = new Posicion(0,-0);
-        Usuario usuario = new Usuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio);
+        Usuario usuario = new Usuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio,4);
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
         setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
         setDeAtraccionesQueElTuristaVisitara.add(mordor);
@@ -52,10 +47,10 @@ public class PromocionExtranjeroTest {
 
     }
 
-     @Test
+    @Test
     public void SiViveAMasDe200DeLaAtraccionMasCercanaElDescuentoDebeSer2840(){
          Posicion domicilio = new Posicion(-150,-100);
-         Usuario usuario = new Usuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio);
+         Usuario usuario = new Usuario(200,500,20,TipoDeAtraccion.Aventura,new Posicion(0,0),domicilio,1);
          setDeAtraccionesQueElTuristaVisitara = new HashSet();
          setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
          setDeAtraccionesQueElTuristaVisitara.add(mordor);
@@ -63,7 +58,7 @@ public class PromocionExtranjeroTest {
 
          PromocionExtranjero promocionExtranjero = new PromocionExtranjero("Si vivis a mas de 200 todas las atracciones a mitad de precio",periodoDeVigencia, usuario);
 
-         Assert.assertEquals(2840, promocionExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
+         Assert.assertEquals(360, promocionExtranjero.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
     }
 
 }

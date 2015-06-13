@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PromocionAbsolutaTest {
+public class PromocionPaqueteDeAtraccionesTest {
 
     private Promocion promoSinAtracciones;
     private Set<Atraccion> setDeAtraccionesQueElTuristaVisitara;
@@ -23,10 +23,7 @@ public class PromocionAbsolutaTest {
         periodoDeVigencia = new PeriodoDeVigencia(fechaInicio,fechaFin);
         Atraccion laCasaDeBilbo = new Atraccion("La Casa De Bilbo", 200, 30, 50, TipoDeAtraccion.Degustacion, new Posicion(20, 30));
         Atraccion mordor = new Atraccion("Mordor", 20, 50, 90, TipoDeAtraccion.Aventura, new Posicion(50, 40));
-        laCasaDeBilbo.setearCantidadDeEntradasDeseadas(1);
-        mordor.setearCantidadDeEntradasDeseadas(1);
         Atraccion rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
-        rivendell.setearCantidadDeEntradasDeseadas(1);
         setDeAtraccionesQueElTuristaVisitara = new HashSet();
         setDeAtraccionesQueElTuristaVisitara.add(laCasaDeBilbo);
         setDeAtraccionesQueElTuristaVisitara.add(mordor);
@@ -38,7 +35,7 @@ public class PromocionAbsolutaTest {
     @Test
     public void siNoHayPromocioneslaReduccionDeCostoTotalDebeSerCero() {
         Set<Atraccion> setVacio = new HashSet();
-        promoSinAtracciones = new PromocionAbsoluta("Promo Sin Atracciones",periodoDeVigencia,setVacio,0);
+        promoSinAtracciones = new PromocionPaqueteDeAtracciones("Promo Sin Atracciones",periodoDeVigencia,setVacio,0);
         Assert.assertEquals(0, promoSinAtracciones.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara), 0);
 
     }
@@ -47,12 +44,10 @@ public class PromocionAbsolutaTest {
     public void siElTuristaVisitara3AtraccionesDeLasCuales2FormanUnPaqueteConDescuentoEseDescuentoDebeSerDe300() {
         Set<Atraccion> setDeDosAtracciones = new HashSet();
         Atraccion laCasaDeBilbo = new Atraccion("La Casa De Bilbo", 200, 30, 50, TipoDeAtraccion.Degustacion, new Posicion(20, 30));
-        laCasaDeBilbo.setearCantidadDeEntradasDeseadas(1);
         setDeDosAtracciones.add(laCasaDeBilbo);
         Atraccion rivendell = new Atraccion("Rivendell", 500, 120, 90, TipoDeAtraccion.Paisaje, new Posicion(500, 10));
-        rivendell.setearCantidadDeEntradasDeseadas(1);
         setDeDosAtracciones.add(rivendell);
-        PromocionAbsoluta promoBilboMasRivendell = new PromocionAbsoluta("Promo La Casa de Bilbo + Rivendell en un día", periodoDeVigencia,setDeDosAtracciones,400);
+        PromocionPaqueteDeAtracciones promoBilboMasRivendell = new PromocionPaqueteDeAtracciones("Promo La Casa de Bilbo + Rivendell en un día", periodoDeVigencia,setDeDosAtracciones,400);
 
         Assert.assertEquals(300,promoBilboMasRivendell.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 
@@ -65,7 +60,7 @@ public class PromocionAbsolutaTest {
         setDeAtracciones.add(new Atraccion("Minas Tirith", 10, 10, 50, TipoDeAtraccion.Degustacion, new Posicion(35, 42)));
         setDeAtracciones.add(new Atraccion("Ravenhill", 10, 10, 50, TipoDeAtraccion.Degustacion, new Posicion(35, 42)));
 
-        PromocionAbsoluta promo = new PromocionAbsoluta("Promo",periodoDeVigencia,setDeAtracciones,400);
+        PromocionPaqueteDeAtracciones promo = new PromocionPaqueteDeAtracciones("Promo",periodoDeVigencia,setDeAtracciones,400);
 
         Assert.assertEquals(0,promo.calcularReduccionDeCostoTotal(setDeAtraccionesQueElTuristaVisitara),0);
 

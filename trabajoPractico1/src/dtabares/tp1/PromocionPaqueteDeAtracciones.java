@@ -4,12 +4,12 @@ package dtabares.tp1;
 import java.util.Iterator;
 import java.util.Set;
 
-public class PromocionAbsoluta extends Promocion{
+public class PromocionPaqueteDeAtracciones extends Promocion{
 
 
     private double costoPorPaquete;
 
-    public PromocionAbsoluta(String nombre, PeriodoDeVigencia periodoDeVigencia, Set atracciocionesSujetasADescuento, double costoPorPaquete){
+    public PromocionPaqueteDeAtracciones(String nombre, PeriodoDeVigencia periodoDeVigencia, Set atracciocionesSujetasADescuento, double costoPorPaquete){
         this.nombre = nombre;
         this.periodoDeVigencia = periodoDeVigencia;
         this.atracciocionesSujetasADescuento = atracciocionesSujetasADescuento;
@@ -27,7 +27,7 @@ public class PromocionAbsoluta extends Promocion{
                 Atraccion atraccionQueElTuristaVisitara = (Atraccion) iteradorDeAtraccionesQueElTuristaVisitara.next();
 
                 if (this.atracciocionesSujetasADescuento.contains(atraccionQueElTuristaVisitara)) {
-                    costoOriginal = costoOriginal + atraccionQueElTuristaVisitara.obtenerCostoTotal();
+                    costoOriginal = costoOriginal + atraccionQueElTuristaVisitara.getCosto();
                 }
             }
             this.reduccionDeCostoTotal = costoOriginal - costoPorPaquete;

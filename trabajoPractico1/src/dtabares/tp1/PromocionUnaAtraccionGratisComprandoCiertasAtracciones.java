@@ -27,7 +27,7 @@ public class PromocionUnaAtraccionGratisComprandoCiertasAtracciones extends Prom
             while (iteradorDeAtraccionesQueElTuristaVisitara.hasNext()){
                 Atraccion atraccionQueElTuristaVisitara = (Atraccion) iteradorDeAtraccionesQueElTuristaVisitara.next();
                 if(atraccionQueElTuristaVisitara.equals(atraccionQueSeDescuentaCostoEnSuTotalidad)){
-                    this.reduccionDeCostoTotal = atraccionQueElTuristaVisitara.obtenerCostoTotal();
+                    this.reduccionDeCostoTotal = atraccionQueElTuristaVisitara.getCosto();
                 }
             }
 

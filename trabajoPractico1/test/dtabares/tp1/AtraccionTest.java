@@ -75,19 +75,5 @@ public class AtraccionTest {
         Assert.assertEquals(-1,atraccionDePrueba.compareTo(otraAtraccion));
 
     }
-    
-    @Test
-    public void siElCostoUnitarioEs200YCompro5EntradasElCostoTotalDebeSer1000(){
-        String nombre = "La Casa de Bilbo";
-        double costoUnitario = 200;
-        int duracionPromedioDeVisitaEnMins = 20;
-        int cupoDeVisitantesDiarios = 500;
-        TipoDeAtraccion tipoDeAtraccion = TipoDeAtraccion.Aventura;
-        Posicion posicion = new Posicion(-34.6037232,-58.3815931 );
-        Atraccion atraccionDePrueba = new Atraccion (nombre, costoUnitario, duracionPromedioDeVisitaEnMins, cupoDeVisitantesDiarios, tipoDeAtraccion, posicion);
-        atraccionDePrueba.setearCantidadDeEntradasDeseadas(5);
-
-        Assert.assertEquals(1000,atraccionDePrueba.obtenerCostoTotal(),0);
-    }
 
 }
