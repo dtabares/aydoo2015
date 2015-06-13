@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.*;
 
-public class GeneradorDeSugerenciasTest {
+public class SecretariaDeTurismoTest {
 
     private Atraccion mordor;
     private Atraccion rivendell;
@@ -50,7 +50,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfilSinPlata,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfilSinPlata,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         Assert.assertEquals(0, generador.generarSugerencia().size());
     }
@@ -65,7 +65,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfilSinTiempo,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfilSinTiempo,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         Assert.assertEquals(0,generador.generarSugerencia().size());
     }
@@ -79,7 +79,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
         System.out.println(listaDeSugerencias.size());
@@ -100,7 +100,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo 1",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
 
@@ -120,7 +120,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionUnaAtraccionGratisComprandoCiertasAtracciones promo = new PromocionUnaAtraccionGratisComprandoCiertasAtracciones("Promo Mordor Va Gratis",periodoDeVigencia,atraccionesSujetasAPromo,mordor);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
 
@@ -142,7 +142,7 @@ public class GeneradorDeSugerenciasTest {
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promo);
         promocionesDisponibles.add(promoPromocionPorcentual);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
 
@@ -160,7 +160,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionAbsoluta promoAbsoluta = new PromocionAbsoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promoAbsoluta);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,4,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
 
@@ -178,7 +178,7 @@ public class GeneradorDeSugerenciasTest {
         PromocionAbsoluta promoAbsoluta = new PromocionAbsoluta("Mordor + Rohan por 60",periodoDeVigencia,atraccionesSujetasAPromo,60);
         promocionesDisponibles = new HashSet();
         promocionesDisponibles.add(promoAbsoluta);
-        GeneradorDeSugerencias generador = new GeneradorDeSugerencias(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,5,3));
+        SecretariaDeTurismo generador = new SecretariaDeTurismo(perfil,promocionesDisponibles,atraccionesDisponibles,new GregorianCalendar(2015,5,3));
 
         List<Sugerencia> listaDeSugerencias = generador.generarSugerencia();
 

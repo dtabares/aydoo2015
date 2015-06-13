@@ -3,7 +3,7 @@ package dtabares.tp1;
 
 import java.util.*;
 
-public class GeneradorDeSugerencias {
+public class SecretariaDeTurismo {
 
     private Usuario usuario;
     private Set<Promocion> promociones;
@@ -13,7 +13,7 @@ public class GeneradorDeSugerencias {
     private BuscadorDeAtracciones buscadorDeAtracciones;
     private AplicadorDePromociones aplicadorDePromociones;
 
-    public GeneradorDeSugerencias(Usuario usuario,Set<Promocion> promociones,Set<Atraccion> atraccionesDelParque,Calendar fechaDeLaVisita){
+    public SecretariaDeTurismo(Usuario usuario, Set<Promocion> promociones, Set<Atraccion> atraccionesDelParque, Calendar fechaDeLaVisita){
         this.usuario = usuario;
         this.promociones = promociones;
         this.sugerencias = new ArrayList<>();
